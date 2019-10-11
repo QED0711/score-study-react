@@ -4,10 +4,20 @@ import ComposerContext from '../../contexts/ComposerContext';
 
 import Period from "./Period";
 
+
+// FOR TESTING PURPOSES ONLY
+
+const testComposers = [
+    {composer: 'Webern, Anton', displayName: "Webern", period: "20th"},
+    {composer: 'Beethoven, Ludwig Van', displayName: "Beethoven", period: "classical"},
+    {composer: 'Berlioz, Hector', displayName: "Berlioz", period: "romantic"},
+    {composer: 'Bach, Johann Sebastian', displayName: "JS Bach", period: "baroque"},
+    {composer: 'Perotin', displayName: "Perotin", period: "early"},
+]
+
 const PeriodContainer = () => {
-  
-    const composers = useContext(ComposerContext)
-    console.log(composers)
+    // Normally, when this component loads, we would load in the composers from a database call
+    const composers = testComposers
   
     return (
     <div className="period-container">
