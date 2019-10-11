@@ -2,12 +2,13 @@ import React, { useContext } from "react";
 import UserContext from "../../contexts/UserContext";
 
 const NavDesktop = () => {
-  const msg = useContext(UserContext);
-  console.log(msg)
+  const user = useContext(UserContext);
+
   return (
     <nav className="navbar navbar-desktop">
-      <div></div>
-      <div></div>
+      <div>About</div>
+      <div>Contributing</div>
+      {user && user.authorization === "admin" && <div>Admin</div>}
     </nav>
   );
 };

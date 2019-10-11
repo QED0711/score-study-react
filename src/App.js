@@ -5,19 +5,20 @@ import UserContext from "./contexts/UserContext";
 import ComposerContext from "./contexts/ComposerContext";
 
 import NavDesktop from "./components/navigation/NavDesktop";
-import Period from "./components/periods/Period";
 import PeriodContainer from "./components/periods/PeriodContainer";
-import ComposerCheckbox from "./components/periods/ComposerCheckbox";
+
+const testUser = { usename: "qdizon", authorization: "admin" };
 
 function App() {
   const [selectedComposers, setSelectedComposers] = useState([]);
-  console.log(selectedComposers)
+  const [user, setUser] = useState(testUser)
+
   return (
     <div className="App">
-      <UserContext.Provider
-        value={{ usename: "qdizon", authorization: "admin" }}
-      >
-        <ComposerContext.Provider value={{selectedComposers, setSelectedComposers}}>
+      <UserContext.Provider value={user}>
+        <ComposerContext.Provider
+          value={{ selectedComposers, setSelectedComposers }}
+        >
           <NavDesktop />
           <PeriodContainer />
         </ComposerContext.Provider>
