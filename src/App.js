@@ -1,23 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 import UserContext from "./contexts/UserContext";
+import ComposerContext from "./contexts/ComposerContext";
 
 import NavDesktop from "./components/navigation/NavDesktop";
-import Period from './components/Period';
+import Period from "./components/periods/Period";
+import PeriodContainer from "./components/periods/PeriodContainer";
+
+
+
+const testComposers = [
+  {composer: 'Webern, Anton', displayName: "Webern", period: "20th"},
+  {composer: 'Beethoven, Ludwig Van', displayName: "Beethoven", period: "classical"},
+  {composer: 'Berlioz, Hector', displayName: "Berlioz", period: "romantic"},
+  {composer: 'Bach, Johann Sebastian', displayName: "JS Bach", period: "baroque"},
+  {composer: 'Perotin', displayName: "Perotin", period: "early"},
+]
 
 function App() {
+  
+  const [composers, setComposers] = useState(testComposers);
+
+
   return (
     <div className="App">
-      <UserContext.Provider value={"hello world"}>
-        <NavDesktop />
-
-        <Period era={"early"} />
-        <Period era={"baroque"} />
-        <Period era={"classical"} />
-        <Period era={"romantic"} />
-        <Period era={"20th-century"} />
-        
+      <UserContext.Provider value={{usename: 'qdizon', authorization: 'admin'}}>
+        <ComposerContext.Provider value={composers}>
+          <NavDesktop />
+          <PeriodContainer />
+        </ComposerContext.Provider>
       </UserContext.Provider>
       {/* 
       ROUTER
