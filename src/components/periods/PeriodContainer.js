@@ -12,11 +12,11 @@ const PeriodContainer = () => {
     return (
     <div className="period-container">
       <h1>Period Container</h1>
-      <Period era={"early"} composers={composers} />
-      <Period era={"baroque"} composers={composers} />
-      <Period era={"classical"} composers={composers} />
-      <Period era={"romantic"} composers={composers} />
-      <Period era={"20th"} composers={composers} />
+      <Period title={"Medieval & Ren."} era={"early"} composers={composers} />
+      <Period title={"Baroque"} era={"baroque"} composers={composers} />
+      <Period title={"Classical"} era={"classical"} composers={composers} />
+      <Period title={"Romantic"} era={"romantic"} composers={composers} />
+      <Period title={"20th Century"} era={"20th"} composers={composers} />
     </div>
   );
 };

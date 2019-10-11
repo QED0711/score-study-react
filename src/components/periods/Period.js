@@ -1,29 +1,24 @@
-import React, {useContext} from 'react';
+import React, { useContext } from "react";
 
-const Period = ({ era, composers }) => {
-    const validComposers = composers.filter(c => {
-        return c.period === era;
-    })
-    const periodComposers = validComposers.map((composer, i) => {
-        return (
-            <div key={i} className="composer-checkbox">
-                <input type="checkbox" value={composer.composer}/>
-                <label>{composer.displayName}</label>
-            </div>
-        )
-    }) 
+import ComposerCheckbox from "./ComposerCheckbox";
 
-    
+const Period = ({ title, era, composers }) => {
+  // Filter only composers who match the specified era
+  const validComposers = composers.filter(c => {
+    return c.period === era;
+  });
 
-    
+  // Render each valid composer to a checkbox
+  const periodComposers = validComposers.map((composer, i) => {
+    return <ComposerCheckbox key={i} composer={composer} />;
+  });
 
-    return (
-        <section className={`period period-${era}`}>
-            <h3>{era}</h3>
-            {periodComposers}
-        </section>
-    )
+  return (
+    <section className={`period period-${era}`}>
+      <h3>{title}</h3>
+      {periodComposers}
+    </section>
+  );
+};
 
-}
-
-export default Period
+export default Period;
