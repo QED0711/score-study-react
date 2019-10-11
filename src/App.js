@@ -1,24 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+
+import UserContext from "./contexts/UserContext";
+
+import NavDesktop from "./components/navigation/NavDesktop";
+import Period from './components/Period';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <UserContext.Provider value={"hello world"}>
+        <NavDesktop />
+
+        <Period era={"early"} />
+        <Period era={"baroque"} />
+        <Period era={"classical"} />
+        <Period era={"romantic"} />
+        <Period era={"20th-century"} />
+        
+      </UserContext.Provider>
+      {/* 
+      ROUTER
+        NAVIGATION
+          admin (if admin)  
+          login
+
+      
+
+
+        USER_INTERFACE
+
+        the following show up no matter if someone is signed in or not
+
+        PERIOD period={early}
+        PERIOD period={baroque}
+        PERIOD period={classical}
+        PERIOD period={romantic}
+        PERIOD period={20th-century}
+
+
+      */}
     </div>
   );
 }
