@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+
 import "./App.css";
 
 import UserContext from "./contexts/UserContext";
@@ -11,40 +13,29 @@ const testUser = { usename: "qdizon", authorization: "admin" };
 
 function App() {
   const [selectedComposers, setSelectedComposers] = useState([]);
-  const [user, setUser] = useState(testUser)
+  const [user, setUser] = useState(testUser);
 
   return (
-    <div className="App">
-      <UserContext.Provider value={user}>
-        <ComposerContext.Provider
-          value={{ selectedComposers, setSelectedComposers }}
-        >
-          <NavDesktop />
-          <PeriodContainer />
-        </ComposerContext.Provider>
-      </UserContext.Provider>
-      {/* 
-      ROUTER
-        NAVIGATION
-          admin (if admin)  
-          login
+    <BrowserRouter>
+      <div className="App">
+        <UserContext.Provider value={user}>
+          <ComposerContext.Provider
+            value={{ selectedComposers, setSelectedComposers }}
+          >
+            <NavDesktop />
+            <Switch>
 
-      
-
-
-        USER_INTERFACE
-
-        the following show up no matter if someone is signed in or not
-
-        PERIOD period={early}
-        PERIOD period={baroque}
-        PERIOD period={classical}
-        PERIOD period={romantic}
-        PERIOD period={20th-century}
-
-
-      */}
-    </div>
+              <Route exact path="/">
+                <h1>ABOUT</h1>
+              </Route>
+              <Route exact path="/app">
+                <PeriodContainer />
+              </Route>
+            </Switch>
+          </ComposerContext.Provider>
+        </UserContext.Provider>
+      </div>
+    </BrowserRouter>
   );
 }
 

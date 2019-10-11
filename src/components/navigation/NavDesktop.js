@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import { Link } from 'react-router-dom';
+
 import UserContext from "../../contexts/UserContext";
 
 const NavDesktop = () => {
@@ -6,9 +8,10 @@ const NavDesktop = () => {
 
   return (
     <nav className="navbar navbar-desktop">
-      <div>About</div>
-      <div>Contributing</div>
-      {user && user.authorization === "admin" && <div>Admin</div>}
+      <Link to="/">About</Link>
+      <Link to="/app">Application</Link>
+      <Link to="/contributing">Contributing</Link>
+      {user && user.authorization === "admin" && <Link to="/admin">Admin</Link>}
     </nav>
   );
 };
