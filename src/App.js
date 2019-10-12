@@ -8,6 +8,7 @@ import ComposerContext from "./contexts/ComposerContext";
 
 import NavDesktop from "./components/navigation/NavDesktop";
 import PeriodContainer from "./components/periods/PeriodContainer";
+import { getAllWorks, getComposerWorks } from "./js/apiRequests";
 
 const testUser = { usename: "qdizon", authorization: "admin" };
 
@@ -24,7 +25,6 @@ function App() {
           >
             <NavDesktop />
             <Switch>
-
               <Route exact path="/">
                 <h1>ABOUT</h1>
               </Route>
@@ -32,6 +32,14 @@ function App() {
                 <PeriodContainer />
               </Route>
             </Switch>
+            <button
+              onClick={e => {
+                getComposerWorks(["Beethoven, Ludwig van", "Mozart, Wolfgang Amadeus"]);
+                // getAllWorks()
+              }}
+            >
+              CLICK ME
+            </button>
           </ComposerContext.Provider>
         </UserContext.Provider>
       </div>
