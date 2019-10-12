@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import ComposerContext from '../../contexts/ComposerContext';
+import { getAllWorks, getComposerWorks } from "../../js/apiRequests";
 
 import Period from "./Period";
 
@@ -9,7 +10,7 @@ import Period from "./Period";
 
 const testComposers = [
     {composer: 'Webern, Anton', displayName: "Webern", period: "20th"},
-    {composer: 'Beethoven, Ludwig Van', displayName: "Beethoven", period: "classical"},
+    {composer: 'Beethoven, Ludwig van', displayName: "Beethoven", period: "classical"},
     {composer: 'Berlioz, Hector', displayName: "Berlioz", period: "romantic"},
     {composer: 'Bach, Johann Sebastian', displayName: "JS Bach", period: "baroque"},
     {composer: 'Perotin', displayName: "Perotin", period: "early"},
@@ -18,7 +19,14 @@ const testComposers = [
 const PeriodContainer = () => {
     // Normally, when this component loads, we would load in the composers from a database call
     const composers = testComposers
-  
+
+    const {selectedComposers} = useContext(ComposerContext)
+    
+    useEffect(() => {
+      getComposerWorks(selectedComposers)
+    }, [selectedComposers])
+
+
     return (
     <div className="period-container">
       <h1>Period Container</h1>

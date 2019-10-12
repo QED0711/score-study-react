@@ -34,7 +34,7 @@ function App() {
             </Switch>
             <button
               onClick={e => {
-                getComposerWorks(["Beethoven, Ludwig van", "Mozart, Wolfgang Amadeus"]);
+                getComposerWorks(selectedComposers);
                 // getAllWorks()
               }}
             >
