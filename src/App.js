@@ -11,6 +11,7 @@ import PeriodContainer from "./components/periods/PeriodContainer";
 import { getAllWorks, getComposerWorks } from "./js/apiRequests";
 import randomScore from "./js/randomScore";
 import ScoreDisplay from "./components/ScoreDisplay";
+import UserSignIn from "./components/users/UserSignIn";
 
 const testUser = { usename: "qdizon", authorization: "admin" };
 
@@ -19,13 +20,21 @@ function App() {
   const [scores, setScores] = useState([]);
   const [selectedScore, setSelectedScore] = useState(null);
 
-  const [user, setUser] = useState(testUser);
+  const [user, setUser] = useState(null);
+  console.log(user)
   return (
     <BrowserRouter>
       <div className="App">
-        <UserContext.Provider value={user}>
+        <UserContext.Provider value={{user, setUser}}>
           <ComposerContext.Provider
-            value={{ selectedComposers, setSelectedComposers, scores, setScores, selectedScore, setSelectedScore }}
+            value={{
+              selectedComposers,
+              setSelectedComposers,
+              scores,
+              setScores,
+              selectedScore,
+              setSelectedScore
+            }}
           >
             <NavDesktop />
             <Switch>
@@ -34,18 +43,12 @@ function App() {
               </Route>
               <Route exact path="/app">
                 <PeriodContainer />
-                {
-                  selectedScore
-                  &&
-                  <ScoreDisplay />
-                }
+                {selectedScore && <ScoreDisplay />}
+              </Route>
+              <Route exact path="/sign-in">
+                <UserSignIn />
               </Route>
             </Switch>
-            <button onClick={e => {  
-              randomScore(scores, setSelectedScore)
-            }}>
-              CLICK ME
-            </button>
           </ComposerContext.Provider>
         </UserContext.Provider>
       </div>

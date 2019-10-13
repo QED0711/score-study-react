@@ -8,6 +8,7 @@ const NavDesktop = () => {
 
   return (
     <nav className="navbar navbar-desktop">
+      <Link to="/sign-in">Sign In</Link>
       <Link to="/">About</Link>
       <Link to="/app">Application</Link>
       <Link to="/contributing">Contributing</Link>

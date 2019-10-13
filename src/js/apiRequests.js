@@ -36,4 +36,28 @@ const getComposerWorks = (composersArr, setScores) => {
   });
 };
 
-export { getComposerWorks, getAllWorks };
+const signInUser = (userData, setUser) => {
+  const settings = {
+    async: true,
+    crossDomain: true,
+    url: "http://localhost:5000/users/sign-in",
+    method: "POST",
+    headers: {
+      
+      "cache-control": "no-cache",
+      "Access-Control-Allow-Origin": true,
+    },
+    processData: true,
+    data: userData
+  };
+
+  $.ajax(settings).done(function(response) {
+    setUser(response);
+  });
+}
+
+export { 
+  getComposerWorks, 
+  getAllWorks,
+  signInUser 
+};
