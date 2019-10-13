@@ -12,6 +12,7 @@ import { getAllWorks, getComposerWorks } from "./js/apiRequests";
 import randomScore from "./js/randomScore";
 import ScoreDisplay from "./components/ScoreDisplay";
 import UserSignIn from "./components/users/UserSignIn";
+import Logout from "./components/users/Logout";
 
 const testUser = { usename: "qdizon", authorization: "admin" };
 
@@ -47,6 +48,9 @@ function App() {
               </Route>
               <Route exact path="/sign-in">
                 <UserSignIn />
+              </Route>
+              <Route exact path="/logout">
+                 <Logout />
               </Route>
             </Switch>
           </ComposerContext.Provider>
