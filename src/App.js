@@ -9,19 +9,23 @@ import ComposerContext from "./contexts/ComposerContext";
 import NavDesktop from "./components/navigation/NavDesktop";
 import PeriodContainer from "./components/periods/PeriodContainer";
 import { getAllWorks, getComposerWorks } from "./js/apiRequests";
+import randomScore from "./js/randomScore";
+import ScoreDisplay from "./components/ScoreDisplay";
 
 const testUser = { usename: "qdizon", authorization: "admin" };
 
 function App() {
   const [selectedComposers, setSelectedComposers] = useState([]);
-  const [user, setUser] = useState(testUser);
+  const [scores, setScores] = useState([]);
+  const [selectedScore, setSelectedScore] = useState(null);
 
+  const [user, setUser] = useState(testUser);
   return (
     <BrowserRouter>
       <div className="App">
         <UserContext.Provider value={user}>
           <ComposerContext.Provider
-            value={{ selectedComposers, setSelectedComposers }}
+            value={{ selectedComposers, setSelectedComposers, scores, setScores, selectedScore, setSelectedScore }}
           >
             <NavDesktop />
             <Switch>
@@ -30,14 +34,16 @@ function App() {
               </Route>
               <Route exact path="/app">
                 <PeriodContainer />
+                {
+                  selectedScore
+                  &&
+                  <ScoreDisplay />
+                }
               </Route>
             </Switch>
-            <button
-              onClick={e => {
-                getComposerWorks(selectedComposers);
-                // getAllWorks()
-              }}
-            >
+            <button onClick={e => {  
+              randomScore(scores, setSelectedScore)
+            }}>
               CLICK ME
             </button>
           </ComposerContext.Provider>

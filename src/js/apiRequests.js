@@ -17,7 +17,7 @@ const getAllWorks = () => {
   });
 };
 
-const getComposerWorks = composersArr => {
+const getComposerWorks = (composersArr, setScores) => {
   const settings = {
     async: true,
     crossDomain: true,
@@ -29,12 +29,10 @@ const getComposerWorks = composersArr => {
     },
     processData: true,
     data: { composers: composersArr }
-    // data: encodeURIComponent(JSON.stringify({composers: composersArr}))
-    // data: "{\"composers\": [\"Beethoven, Ludwig van\", \"Mozart, Wolfgang Amadeus\"] }"
   };
 
   $.ajax(settings).done(function(response) {
-    console.log(response);
+    setScores(response)
   });
 };
 
