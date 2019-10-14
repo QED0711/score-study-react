@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 
 import ComposerContext from "../../contexts/ComposerContext";
 import UserContext from "../../contexts/UserContext";
-import { getAllWorks, getComposerWorks } from "../../js/apiRequests";
+import { getAllWorks, getComposerWorks, getComposers } from "../../js/apiRequests";
 
 import randomScore from '../../js/randomScore';
 
@@ -33,9 +33,9 @@ const testComposers = [
 
 const PeriodContainer = () => {
   // Normally, when this component loads, we would load in the composers from a database call
-  const composers = testComposers;
-
-  const { selectedComposers, scores, setScores, setSelectedScore } = useContext(ComposerContext);
+  // const composers = testComposers;
+  // getComposers()
+  const { composers, selectedComposers, scores, setScores, setSelectedScore } = useContext(ComposerContext);
   const {user} = useContext(UserContext);
 
   useEffect(() => {
@@ -49,11 +49,17 @@ const PeriodContainer = () => {
   return (
     <div className="period-container">
       {user && <h3>Signed in as {user.username}</h3>}
-      <Period title={"Medieval & Ren."} era={"early"} composers={composers} />
-      <Period title={"Baroque"} era={"baroque"} composers={composers} />
-      <Period title={"Classical"} era={"classical"} composers={composers} />
-      <Period title={"Romantic"} era={"romantic"} composers={composers} />
-      <Period title={"20th Century"} era={"20th"} composers={composers} />
+      {
+        composers &&
+        <div>
+          <Period title={"Medieval & Ren."} era={"early"} composers={composers} />
+          <Period title={"Baroque"} era={"baroque"} composers={composers} />
+          <Period title={"Classical"} era={"classical"} composers={composers} />
+          <Period title={"Romantic"} era={"romantic"} composers={composers} />
+          <Period title={"20th Century"} era={"20th"} composers={composers} />
+        </div>
+      
+      }
       {
         !!selectedComposers.length
         &&

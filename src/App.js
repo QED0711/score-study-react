@@ -9,7 +9,7 @@ import ComposerContext from "./contexts/ComposerContext";
 
 import NavDesktop from "./components/navigation/NavDesktop";
 import PeriodContainer from "./components/periods/PeriodContainer";
-import { getAllWorks, getComposerWorks } from "./js/apiRequests";
+import { getAllWorks, getComposerWorks, getComposers } from "./js/apiRequests";
 import randomScore from "./js/randomScore";
 import ScoreDisplay from "./components/ScoreDisplay";
 import UserSignIn from "./components/users/UserSignIn";
@@ -18,18 +18,24 @@ import Logout from "./components/users/Logout";
 const testUser = { usename: "qdizon", authorization: "admin" };
 
 function App() {
+  const [composers, setComposers] = useState(null)
   const [selectedComposers, setSelectedComposers] = useState([]);
   const [scores, setScores] = useState([]);
   const [selectedScore, setSelectedScore] = useState(null);
 
   const [user, setUser] = useState(null);
   
+  if(!composers){
+    getComposers(setComposers)
+  }
+
   return (
     <BrowserRouter>
       <div className="App">
         <UserContext.Provider value={{user, setUser}}>
           <ComposerContext.Provider
             value={{
+              composers,
               selectedComposers,
               setSelectedComposers,
               scores,
