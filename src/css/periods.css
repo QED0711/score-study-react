@@ -1,0 +1,24 @@
+.composer-checkbox {
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 0.25em 0.5em;
+  padding: 0.25em 1em;
+
+  box-shadow: 2px 2px 3px grey;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none;
+}
+
+.composer-selected-true {
+  background-color: #64cccc;
+}
+
+.composer-selected-false {
+  background-color: #c8c8c8;
+}

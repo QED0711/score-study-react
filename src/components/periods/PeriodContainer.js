@@ -17,6 +17,11 @@ const testComposers = [
     displayName: "Beethoven",
     period: "classical"
   },
+  {
+    composer: "Mozart, Wolfgang Amadeus",
+    displayName: "Mozart",
+    period: "classical"
+  },
   { composer: "Berlioz, Hector", displayName: "Berlioz", period: "romantic" },
   {
     composer: "Bach, Johann Sebastian",

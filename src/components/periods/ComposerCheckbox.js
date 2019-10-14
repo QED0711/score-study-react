@@ -19,15 +19,31 @@ const ComposerCheckbox = ({ composer }) => {
     };
   };
 
+  const handleClickV2 = composer => {
+    return e => {
+      const currentClass = e.target.className
+      if(!!currentClass.match("composer-selected-true")){
+        e.target.className = "composer-checkbox composer-selected-false"
+        setSelectedComposers(
+          selectedComposers.filter(name => name !== composer.composer)
+        );
+      } else {
+        e.target.className = "composer-checkbox composer-selected-true"
+        setSelectedComposers([...selectedComposers, composer.composer]);
+      }
+    }
+  }
+
   return (
-    <div className="composer-checkbox">
-      <input
+    <div className="composer-checkbox composer-selected-false" onClick={handleClickV2(composer)}>
+      {/* <input
         type="checkbox"
         id={composer.displayName}
         value={composer.composer}
         onClick={handleClick(composer)}
       />
-      <label htmlFor={composer.displayName}>{composer.displayName}</label>
+      <label htmlFor={composer.displayName}>{composer.displayName}</label> */}
+      {composer.displayName}
     </div>
   );
 };
