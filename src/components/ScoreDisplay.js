@@ -8,13 +8,17 @@ const ScoreDisplay = () => {
   const pdf =
     selectedScore.pdfs[Math.floor(Math.random() * selectedScore.pdfs.length)];
 
-  const pageNum = Math.floor(Math.random() * 50) + 5;
+  const pageNum = Math.floor(Math.random() * 10) + 5;
   return (
     <div className="score-display">
       <iframe
-        scrolling="no"
+        onScroll={e => {
+          e.preventDefault();
+          console.log("SCROLLING")
+        }}
         src={`${pdf}#page=${pageNum}`}
-        style={{ height: 800, width: "90%" }}
+        scrolling="no"
+        style={{ height: 800, width: "90%", overflow: "hidden" }}
       ></iframe>
     </div>
   );

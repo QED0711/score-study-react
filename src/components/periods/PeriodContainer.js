@@ -4,6 +4,8 @@ import ComposerContext from "../../contexts/ComposerContext";
 import UserContext from "../../contexts/UserContext";
 import { getAllWorks, getComposerWorks } from "../../js/apiRequests";
 
+import randomScore from '../../js/randomScore';
+
 import Period from "./Period";
 
 // FOR TESTING PURPOSES ONLY
@@ -28,7 +30,7 @@ const PeriodContainer = () => {
   // Normally, when this component loads, we would load in the composers from a database call
   const composers = testComposers;
 
-  const { selectedComposers, scores, setScores } = useContext(ComposerContext);
+  const { selectedComposers, scores, setScores, setSelectedScore } = useContext(ComposerContext);
   const {user} = useContext(UserContext);
 
   useEffect(() => {
@@ -47,6 +49,13 @@ const PeriodContainer = () => {
       <Period title={"Classical"} era={"classical"} composers={composers} />
       <Period title={"Romantic"} era={"romantic"} composers={composers} />
       <Period title={"20th Century"} era={"20th"} composers={composers} />
+      {
+        !!selectedComposers.length
+        &&
+        <button onClick={e => {
+          randomScore(scores, setSelectedScore)
+        }}>New Score</button>
+      }
     </div>
   );
 };
