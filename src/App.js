@@ -22,7 +22,7 @@ function App() {
   const [selectedScore, setSelectedScore] = useState(null);
 
   const [user, setUser] = useState(null);
-  console.log(user)
+  
   return (
     <BrowserRouter>
       <div className="App">

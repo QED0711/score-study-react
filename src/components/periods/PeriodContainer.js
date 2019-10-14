@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 
 import ComposerContext from "../../contexts/ComposerContext";
+import UserContext from "../../contexts/UserContext";
 import { getAllWorks, getComposerWorks } from "../../js/apiRequests";
 
 import Period from "./Period";
@@ -28,6 +29,7 @@ const PeriodContainer = () => {
   const composers = testComposers;
 
   const { selectedComposers, scores, setScores } = useContext(ComposerContext);
+  const {user} = useContext(UserContext);
 
   useEffect(() => {
     if (selectedComposers.length) {
@@ -39,7 +41,7 @@ const PeriodContainer = () => {
 
   return (
     <div className="period-container">
-      <h1>Period Container</h1>
+      {user && <h3>Signed in as {user.username}</h3>}
       <Period title={"Medieval & Ren."} era={"early"} composers={composers} />
       <Period title={"Baroque"} era={"baroque"} composers={composers} />
       <Period title={"Classical"} era={"classical"} composers={composers} />
