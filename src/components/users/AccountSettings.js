@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {Redirect} from 'react-router-dom';
 
 import {UserContext} from '../../state/UserProvider';
-import { changeUserPassword } from '../../js/apiRequests';
+import { changeUserEmail, changeUserPassword } from '../../js/apiRequests';
 
 const AccountSettings = () => {
 
@@ -11,13 +11,15 @@ const AccountSettings = () => {
     if(!s.user) return <Redirect to="/" />
 
     const handleChangeEmailSubmit = e => {
-        const newEmail = document.getElementById("email").value;
+        e.preventDefault()
+        const email = document.getElementById("email").value;
+        changeUserEmail({...s.user, email})
         // api call here
     }
     
     const handleChangePasswordSubmit = e => {
         e.preventDefault();
-        
+
         const currentPassword = document.getElementById("password").value
         const newPassword = document.getElementById("new-password").value
         const newPasswordConfirm = document.getElementById("new-password-confirm").value
@@ -28,7 +30,7 @@ const AccountSettings = () => {
     return (
         <div>
             <h2>{s.user.username}</h2>
-            <form id="email-settings-form">
+            <form id="email-settings-form" onSubmit={handleChangeEmailSubmit}>
                 <label htmlFor="email">Email</label>
                 <br/>
                 <input id="email" type="text" defaultValue={s.user.email} />

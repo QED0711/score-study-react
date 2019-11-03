@@ -107,6 +107,31 @@ export const signInUser = (userData, sm) => {
 };
 
 /* 
+::::::::::::::::::
+:: CHANGE EMAIL ::
+::::::::::::::::::
+*/
+
+export const changeUserEmail = (userData, sm) => {
+  const settings = {
+    async: true,
+    crossDomain: true,
+    url: baseURL + "/users/change-email",
+    method: "POST",
+    headers: {
+      "cache-control": "no-cache",
+      "Access-Control-Allow-Origin": true
+    },
+    processData: true,
+    data: userData
+  };
+
+  $.ajax(settings).done(function(response) {
+    console.log(response)
+  });
+};
+
+/* 
 :::::::::::::::::::::
 :: CHANGE PASSWORD ::
 :::::::::::::::::::::
