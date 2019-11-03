@@ -10,7 +10,7 @@ export const ComposerContext = createContext(null)
 // ----------------------- STATE -----------------------
 const state = {
     composers: null,
-    selectedComposer: [],
+    selectedComposers: [],
     scores: [],
     selectedScore: null,
 }
@@ -23,8 +23,8 @@ const stateMethods = {
         this.setState({composers})
     },
     
-    setSelectedComposer: function(selectedComposer){
-        this.setState({selectedComposer})
+    setSelectedComposers: function(selectedComposers){
+        this.setState({selectedComposers})
     },
     
     setScores: function(scores){
@@ -32,6 +32,7 @@ const stateMethods = {
     },
     
     setSelectedScore: function(selectedScore){
+        console.log(selectedScore)
         this.setState({selectedScore})
     },
 

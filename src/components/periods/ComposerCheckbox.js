@@ -1,48 +1,41 @@
 import React, { useContext } from "react";
-import ComposerContext from "../../contexts/ComposerContext";
+import { ComposerContext } from "../../state/ComposerProvider";
 
 const ComposerCheckbox = ({ composer }) => {
-  const { selectedComposers, setSelectedComposers } = useContext(
-    ComposerContext
-  );
+  const { state: s, stateMethods: sm } = useContext(ComposerContext);
+  // const handleClick = composer => {
+  //   return e => {
+  //     const checked = document.getElementById(composer.displayName).checked;
+  //     if (checked) {
+  //       sm.setSelectedComposers([...s.selectedComposers, composer.composer]);
+  //     } else {
+  //       sm.setSelectedComposers(
+  //         s.selectedComposers.filter(name => name !== composer.composer)
+  //       );
+  //     }
+  //   };
+  // };
 
-  const handleClick = composer => {
+  const handleClickV2 = composer => {
     return e => {
-      const checked = document.getElementById(composer.displayName).checked;
-      if (checked) {
-        setSelectedComposers([...selectedComposers, composer.composer]);
-      } else {
-        setSelectedComposers(
-          selectedComposers.filter(name => name !== composer.composer)
+      const currentClass = e.target.className;
+      if (!!currentClass.match("composer-selected-true")) {
+        e.target.className = "composer-checkbox composer-selected-false";
+        sm.setSelectedComposers(
+          s.selectedComposers.filter(name => name !== composer.composer)
         );
+      } else {
+        e.target.className = "composer-checkbox composer-selected-true";
+        sm.setSelectedComposers([...s.selectedComposers, composer.composer]);
       }
     };
   };
 
-  const handleClickV2 = composer => {
-    return e => {
-      const currentClass = e.target.className
-      if(!!currentClass.match("composer-selected-true")){
-        e.target.className = "composer-checkbox composer-selected-false"
-        setSelectedComposers(
-          selectedComposers.filter(name => name !== composer.composer)
-        );
-      } else {
-        e.target.className = "composer-checkbox composer-selected-true"
-        setSelectedComposers([...selectedComposers, composer.composer]);
-      }
-    }
-  }
-
   return (
-    <div className="composer-checkbox composer-selected-false" onClick={handleClickV2(composer)}>
-      {/* <input
-        type="checkbox"
-        id={composer.displayName}
-        value={composer.composer}
-        onClick={handleClick(composer)}
-      />
-      <label htmlFor={composer.displayName}>{composer.displayName}</label> */}
+    <div
+      className="composer-checkbox composer-selected-false"
+      onClick={handleClickV2(composer)}
+    >
       {composer.displayName}
     </div>
   );

@@ -1,7 +1,8 @@
 import React, { useContext, useEffect } from "react";
 
-import ComposerContext from "../../contexts/ComposerContext";
+import { ComposerContext } from "../../state/ComposerProvider";
 import { UserContext } from "../../state/UserProvider";
+
 import {
   getAllWorks,
   getComposerWorks,
@@ -13,43 +14,38 @@ import randomScore from "../../js/randomScore";
 import Period from "./Period";
 
 const PeriodContainer = () => {
-  const {
-    composers,
-    selectedComposers,
-    scores,
-    setScores,
-    setSelectedScore
-  } = useContext(ComposerContext);
-  const { state: s, statemethods: sm } = useContext(UserContext);
+
+  const { state: cs, stateMethods: csm } = useContext(ComposerContext);
+  const { state: us, statemethods: usm } = useContext(UserContext);
 
   useEffect(() => {
-    if (selectedComposers.length) {
-      getComposerWorks(selectedComposers, setScores);
-    } else {
-      setScores([]);
+    if (!cs.composers) {
+      getComposers(csm.setComposers);
     }
-  }, [selectedComposers]);
+
+    if (cs.selectedComposers.length) {
+      getComposerWorks(cs.selectedComposers, csm.setScores);
+    } else {
+      csm.setScores([]);
+    }
+  }, [cs.selectedComposers]);
 
   return (
     <div className="period-container">
-      {s.user && <h3>Signed in as {s.user.username}</h3>}
-      {composers && (
+      {us.user && <h3>Signed in as {us.user.username}</h3>}
+      {cs.composers && (
         <div>
-          <Period
-            title={"Medieval & Ren."}
-            era={"early"}
-            composers={composers}
-          />
-          <Period title={"Baroque"} era={"baroque"} composers={composers} />
-          <Period title={"Classical"} era={"classical"} composers={composers} />
-          <Period title={"Romantic"} era={"romantic"} composers={composers} />
-          <Period title={"20th Century"} era={"20th"} composers={composers} />
+          <Period title={"Medieval & Ren."} era={"early"} composers={cs.composers}/>
+          <Period title={"Baroque"} era={"baroque"} composers={cs.composers} />
+          <Period title={"Classical"} era={"classical"} composers={cs.composers} />
+          <Period title={"Romantic"} era={"romantic"} composers={cs.composers} />
+          <Period title={"20th Century"} era={"20th"} composers={cs.composers} />
         </div>
       )}
-      {!!selectedComposers.length && (
+      {!!cs.selectedComposers.length && (
         <button
           onClick={e => {
-            randomScore(scores, setSelectedScore);
+            randomScore(cs.scores, csm.setSelectedScore);
           }}
         >
           New Score

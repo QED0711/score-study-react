@@ -5,13 +5,10 @@ import "./App.css";
 import "./css/periods.css";
 
 import UserProvider from "./state/UserProvider";
-
-import ComposerContext from "./contexts/ComposerContext";
+import ComposerProvider from './state/ComposerProvider';
 
 import NavDesktop from "./components/navigation/NavDesktop";
 import PeriodContainer from "./components/periods/PeriodContainer";
-import { getAllWorks, getComposerWorks, getComposers } from "./js/apiRequests";
-import randomScore from "./js/randomScore";
 import ScoreDisplay from "./components/ScoreDisplay";
 import UserSignIn from "./components/users/UserSignIn";
 import Logout from "./components/users/Logout";
@@ -19,32 +16,19 @@ import Logout from "./components/users/Logout";
 const testUser = { usename: "qdizon", authorization: "admin" };
 
 function App() {
-  const [composers, setComposers] = useState(null)
-  const [selectedComposers, setSelectedComposers] = useState([]);
-  const [scores, setScores] = useState([]);
-  const [selectedScore, setSelectedScore] = useState(null);
+  // const [composers, setComposers] = useState(null)
+  // const [selectedComposers, setSelectedComposers] = useState([]);
+  // const [scores, setScores] = useState([]);
+  // const [selectedScore, setSelectedScore] = useState(null);
 
-  const [user, setUser] = useState(null);
-  
-  if(!composers){
-    getComposers(setComposers)
-  }
+  // const [user, setUser] = useState(null);
 
   return (
     <BrowserRouter>
       <div className="App">
         <UserProvider>
-          <ComposerContext.Provider
-            value={{
-              composers,
-              selectedComposers,
-              setSelectedComposers,
-              scores,
-              setScores,
-              selectedScore,
-              setSelectedScore
-            }}
-          >
+          <ComposerProvider>
+
             <NavDesktop />
             <Switch>
               <Route exact path="/">
@@ -52,7 +36,7 @@ function App() {
               </Route>
               <Route exact path="/app">
                 <PeriodContainer />
-                {selectedScore && <ScoreDisplay />}
+                <ScoreDisplay />
               </Route>
               <Route exact path="/sign-in">
                 <UserSignIn />
@@ -61,7 +45,8 @@ function App() {
                  <Logout />
               </Route>
             </Switch>
-          </ComposerContext.Provider>
+
+          </ComposerProvider>
         </UserProvider>
       </div>
     </BrowserRouter>

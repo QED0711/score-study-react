@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 
-import ComposerContext from "../contexts/ComposerContext";
+import {ComposerContext} from "../state/ComposerProvider";
 
 const ScoreDisplay = () => {
-  const { selectedScore } = useContext(ComposerContext);
-  console.log(selectedScore);
+  const { state: cs } = useContext(ComposerContext);
+  
+  if(!cs.selectedScore) return <div className="score-display"></div>
+
   const pdf =
-    selectedScore.pdfs[Math.floor(Math.random() * selectedScore.pdfs.length)];
+    cs.selectedScore.pdfs[Math.floor(Math.random() * cs.selectedScore.pdfs.length)];
 
   const pageNum = Math.floor(Math.random() * 10) + 5;
   return (
