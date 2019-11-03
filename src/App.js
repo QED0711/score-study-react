@@ -4,7 +4,8 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.css";
 import "./css/periods.css";
 
-import UserContext from "./contexts/UserContext";
+import UserProvider from "./state/UserProvider";
+
 import ComposerContext from "./contexts/ComposerContext";
 
 import NavDesktop from "./components/navigation/NavDesktop";
@@ -32,7 +33,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <UserContext.Provider value={{user, setUser}}>
+        <UserProvider>
           <ComposerContext.Provider
             value={{
               composers,
@@ -61,7 +62,7 @@ function App() {
               </Route>
             </Switch>
           </ComposerContext.Provider>
-        </UserContext.Provider>
+        </UserProvider>
       </div>
     </BrowserRouter>
   );

@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 import { Link, Redirect } from "react-router-dom";
 
-import UserContext from "../../contexts/UserContext";
+import {UserContext} from "../../state/UserProvider";
 
 import { signInUser } from "../../js/apiRequests";
 
 const UserSignIn = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { state: s, stateMethods: sm } = useContext(UserContext);
 
-    if(user){
+    if(s.user){
         return <Redirect to="/app"/>
     }
 
@@ -17,7 +17,7 @@ const UserSignIn = () => {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
-    signInUser({ username, password }, setUser);
+    signInUser({ username, password }, sm);
   };
 
   return (

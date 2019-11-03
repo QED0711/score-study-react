@@ -36,7 +36,7 @@ const getComposerWorks = (composersArr, setScores) => {
   });
 };
 
-const signInUser = (userData, setUser) => {
+const signInUser = (userData, sm) => {
   const settings = {
     async: true,
     crossDomain: true,
@@ -52,7 +52,7 @@ const signInUser = (userData, setUser) => {
   };
 
   $.ajax(settings).done(function(response) {
-    setUser(response);
+    sm.setUser(response);
   });
 }
 
