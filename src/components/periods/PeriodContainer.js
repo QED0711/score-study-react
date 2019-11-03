@@ -8,33 +8,8 @@ import randomScore from '../../js/randomScore';
 
 import Period from "./Period";
 
-// FOR TESTING PURPOSES ONLY
-
-const testComposers = [
-  { composer: "Webern, Anton", displayName: "Webern", period: "20th" },
-  {
-    composer: "Beethoven, Ludwig van",
-    displayName: "Beethoven",
-    period: "classical"
-  },
-  {
-    composer: "Mozart, Wolfgang Amadeus",
-    displayName: "Mozart",
-    period: "classical"
-  },
-  { composer: "Berlioz, Hector", displayName: "Berlioz", period: "romantic" },
-  {
-    composer: "Bach, Johann Sebastian",
-    displayName: "JS Bach",
-    period: "baroque"
-  },
-  { composer: "Perotin", displayName: "Perotin", period: "early" }
-];
-
 const PeriodContainer = () => {
-  // Normally, when this component loads, we would load in the composers from a database call
-  // const composers = testComposers;
-  // getComposers()
+
   const { composers, selectedComposers, scores, setScores, setSelectedScore } = useContext(ComposerContext);
   const {user} = useContext(UserContext);
 
