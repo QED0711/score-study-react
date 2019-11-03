@@ -5,7 +5,12 @@ const baseURL = `${config.apiProtocol}://${config.apiHost}:${config.apiPort}`
 
 // ---------------------------- COMPOSERS API ----------------------------
 
-const getAllWorks = () => {
+/* 
+:::::::::::::::::::
+:: GET ALL WORKS ::
+:::::::::::::::::::
+*/
+export const getAllWorks = () => {
   const settings = {
     async: true,
     crossDomain: true,
@@ -22,7 +27,13 @@ const getAllWorks = () => {
   });
 };
 
-const getComposerWorks = (composersArr, setScores) => {
+/* 
+::::::::::::::::::::::::
+:: GET COMPOSER WORKS ::
+::::::::::::::::::::::::
+*/
+
+export const getComposerWorks = (composersArr, setScores) => {
   const settings = {
     async: true,
     crossDomain: true,
@@ -41,7 +52,13 @@ const getComposerWorks = (composersArr, setScores) => {
   });
 };
 
-const getComposers = (setComposers) => {
+/* 
+:::::::::::::::::::
+:: GET COMPOSERS ::
+:::::::::::::::::::
+*/
+
+export const getComposers = (setComposers) => {
   const settings = {
     async: true,
     crossDomain: true,
@@ -61,7 +78,13 @@ const getComposers = (setComposers) => {
 
 // ---------------------------- USER API ----------------------------
 
-const signInUser = (userData, sm) => {
+/* 
+::::::::::::::::::
+:: SIGN IN USER ::
+::::::::::::::::::
+*/
+
+export const signInUser = (userData, sm) => {
   const settings = {
     async: true,
     crossDomain: true,
@@ -86,10 +109,3 @@ const signInUser = (userData, sm) => {
   });
 }
 
-export { 
-  getComposerWorks, 
-  getAllWorks,
-  getComposers,
-
-  signInUser,
-};
