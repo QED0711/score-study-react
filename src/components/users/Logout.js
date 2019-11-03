@@ -1,16 +1,14 @@
-import React, {useContext} from 'react';
-import {Redirect} from 'react-router-dom';
+import React, { useContext } from "react";
+import { Redirect } from "react-router-dom";
 
-import {UserContext} from '../../state/UserProvider';
+import { UserContext } from "../../state/UserProvider";
 
 const Logout = () => {
+  const { stateMethods: sm } = useContext(UserContext);
 
-    const {stateMethods: sm} = useContext(UserContext);
+  sm.setUser(null);
 
-    sm.setUser(null);
-
-    return <Redirect to="/" />
-
-}
+  return <Redirect to="/" />;
+};
 
 export default Logout;

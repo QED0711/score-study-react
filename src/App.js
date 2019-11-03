@@ -13,15 +13,7 @@ import ScoreDisplay from "./components/ScoreDisplay";
 import UserSignIn from "./components/users/UserSignIn";
 import Logout from "./components/users/Logout";
 
-const testUser = { usename: "qdizon", authorization: "admin" };
-
 function App() {
-  // const [composers, setComposers] = useState(null)
-  // const [selectedComposers, setSelectedComposers] = useState([]);
-  // const [scores, setScores] = useState([]);
-  // const [selectedScore, setSelectedScore] = useState(null);
-
-  // const [user, setUser] = useState(null);
 
   return (
     <BrowserRouter>

@@ -1,10 +1,14 @@
 import $ from "jquery";
+import config from '../config.json';
+
+const baseURL = `${config.apiProtocol}://${config.apiHost}:${config.apiPort}`
+
 
 const getAllWorks = () => {
   const settings = {
     async: true,
     crossDomain: true,
-    url: "http://localhost:5000/works",
+    url: baseURL + "/works",
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -21,7 +25,7 @@ const getComposerWorks = (composersArr, setScores) => {
   const settings = {
     async: true,
     crossDomain: true,
-    url: "http://localhost:5000/composer-works",
+    url: baseURL + "/composer-works",
     method: "POST",
     headers: {
       "cache-control": "no-cache",
@@ -40,7 +44,7 @@ const signInUser = (userData, sm) => {
   const settings = {
     async: true,
     crossDomain: true,
-    url: "http://localhost:5000/users/sign-in",
+    url: baseURL + "/users/sign-in",
     method: "POST",
     headers: {
       
@@ -60,7 +64,7 @@ const getComposers = (setComposers) => {
   const settings = {
     async: true,
     crossDomain: true,
-    url: "http://localhost:5000/composers",
+    url: baseURL + "/composers",
     method: "GET",
     headers: {
       "cache-control": "no-cache",
