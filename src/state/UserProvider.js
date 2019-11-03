@@ -5,12 +5,16 @@ import bindStateMethods from './bindStateMethods';
 export const UserContext = createContext(null);
 
 const state = {
-    user: null
+    user: null,
+    signInError: null
 }
 
 const stateMethods = {
     setUser: function (user) {
-        this.setState({user})
+        this.setState({user, signInError: null})
+    },
+    setSignInError: function(signInError){
+        this.setState({signInError})
     }
 }
 
