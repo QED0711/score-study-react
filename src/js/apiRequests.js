@@ -1,7 +1,7 @@
 import $ from "jquery";
-import config from '../config.json';
+import config from "../config.json";
 
-const baseURL = `${config.apiProtocol}://${config.apiHost}:${config.apiPort}`
+const baseURL = `${config.apiProtocol}://${config.apiHost}:${config.apiPort}`;
 
 // ---------------------------- COMPOSERS API ----------------------------
 
@@ -18,7 +18,7 @@ export const getAllWorks = () => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "cache-control": "no-cache",
+      "cache-control": "no-cache"
     }
   };
 
@@ -41,14 +41,14 @@ export const getComposerWorks = (composersArr, setScores) => {
     method: "POST",
     headers: {
       "cache-control": "no-cache",
-      "Access-Control-Allow-Origin": true,
+      "Access-Control-Allow-Origin": true
     },
     processData: true,
     data: { composers: composersArr }
   };
 
   $.ajax(settings).done(function(response) {
-    setScores(response)
+    setScores(response);
   });
 };
 
@@ -58,7 +58,7 @@ export const getComposerWorks = (composersArr, setScores) => {
 :::::::::::::::::::
 */
 
-export const getComposers = (setComposers) => {
+export const getComposers = setComposers => {
   const settings = {
     async: true,
     crossDomain: true,
@@ -66,15 +66,14 @@ export const getComposers = (setComposers) => {
     method: "GET",
     headers: {
       "cache-control": "no-cache",
-      "Access-Control-Allow-Origin": true,
-    },
+      "Access-Control-Allow-Origin": true
+    }
   };
 
   $.ajax(settings).done(function(response) {
     setComposers(response);
   });
-}
-
+};
 
 // ---------------------------- USER API ----------------------------
 
@@ -91,9 +90,37 @@ export const signInUser = (userData, sm) => {
     url: baseURL + "/users/sign-in",
     method: "POST",
     headers: {
-      
       "cache-control": "no-cache",
-      "Access-Control-Allow-Origin": true,
+      "Access-Control-Allow-Origin": true
+    },
+    processData: true,
+    data: userData
+  };
+
+  $.ajax(settings).done(function(response) {
+    if (response.error) {
+      sm.setSignInError(response.error);
+    } else {
+      sm.setUser(response);
+    }
+  });
+};
+
+/* 
+:::::::::::::::::::::
+:: CHANGE PASSWORD ::
+:::::::::::::::::::::
+*/
+
+export const changeUserPassword = (userData, sm) => {
+  const settings = {
+    async: true,
+    crossDomain: true,
+    url: baseURL + "/users/change-password",
+    method: "POST",
+    headers: {
+      "cache-control": "no-cache",
+      "Access-Control-Allow-Origin": true
     },
     processData: true,
     data: userData
@@ -101,11 +128,5 @@ export const signInUser = (userData, sm) => {
 
   $.ajax(settings).done(function(response) {
     console.log(response)
-    if(response.error){
-      sm.setSignInError(response.error)
-    } else {
-      sm.setUser(response);
-    }
   });
-}
-
+};

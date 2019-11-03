@@ -12,6 +12,7 @@ import PeriodContainer from "./components/periods/PeriodContainer";
 import ScoreDisplay from "./components/ScoreDisplay";
 import UserSignIn from "./components/users/UserSignIn";
 import Logout from "./components/users/Logout";
+import AccountSettings from "./components/users/AccountSettings";
 
 function App() {
 
@@ -32,6 +33,9 @@ function App() {
               </Route>
               <Route exact path="/sign-in">
                 <UserSignIn />
+              </Route>
+              <Route exact path="/change-password">
+                <AccountSettings />
               </Route>
               <Route exact path="/logout">
                  <Logout />
