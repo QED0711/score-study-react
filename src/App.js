@@ -11,6 +11,7 @@ import NavDesktop from "./components/navigation/NavDesktop";
 import PeriodContainer from "./components/periods/PeriodContainer";
 import ScoreDisplay from "./components/ScoreDisplay";
 import UserSignIn from "./components/users/UserSignIn";
+import CreateUser from "./components/users/CreateUser";
 import Logout from "./components/users/Logout";
 import AccountSettings from "./components/users/AccountSettings";
 
@@ -33,6 +34,9 @@ function App() {
               </Route>
               <Route exact path="/sign-in">
                 <UserSignIn />
+              </Route>
+              <Route exact path="/create-account">
+                <CreateUser />
               </Route>
               <Route exact path="/change-password">
                 <AccountSettings />
