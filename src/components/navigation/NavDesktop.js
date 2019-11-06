@@ -11,7 +11,7 @@ const NavDesktop = () => {
       {!s.user && <Link to="/sign-in">Sign In</Link>}
       <Link to="/">About</Link>
       <Link to="/app">Application</Link>
-      {!s.user && <Link to="/create-account">Create Account</Link>}
+      {/* {!s.user && <Link to="/create-account">Create Account</Link>} */}
       {s.user && <Link to="/logout">Logout</Link>}
       {s.user && <Link to="/change-password">Change Password</Link>}
       {s.user && s.user.authorization === "admin" && <Link to="/admin">Admin</Link>}

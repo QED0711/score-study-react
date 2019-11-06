@@ -39,7 +39,7 @@ const UserSignIn = () => {
         {s.signInError && <h5>{s.signInError}</h5>}
       </form>
       <p>
-        Don't have an account? Create one <Link to="/sign-up">here</Link>.
+        Don't have an account? Create one <Link to="/create-account">here</Link>.
       </p>
     </section>
   );
