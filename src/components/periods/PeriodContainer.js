@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { ComposerContext } from "../../state/ComposerProvider";
 import { UserContext } from "../../state/UserProvider";
@@ -17,6 +17,7 @@ const PeriodContainer = () => {
 
   const { state: cs, stateMethods: csm } = useContext(ComposerContext);
   const { state: us, statemethods: usm } = useContext(UserContext);
+
 
   useEffect(() => {
     if (!cs.composers) {
