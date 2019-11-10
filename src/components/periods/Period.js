@@ -15,8 +15,14 @@ const Period = ({ title, era, composers }) => {
 
   return (
     <section className={`period period-${era}`}>
-      <h3>{title}</h3>
-      {periodComposers}
+      <div className="period-title-banner">
+        <h3>{title}</h3>
+      </div>
+      <div className="period-background-overlay">
+        <div className="period-checkboxes">
+          {periodComposers}
+        </div>
+      </div>
     </section>
   );
 };

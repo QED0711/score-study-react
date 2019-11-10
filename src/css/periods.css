@@ -1,10 +1,52 @@
+
+/* 
+PERIOD
+*/
+
+.period{
+  
+  width: var(--primary-container-width);
+  margin: 1em auto;
+  text-align: left;
+
+  border-radius: 2px;
+  box-shadow: var(--medium-shadow-light);
+
+  background-size: contain;
+  
+
+}
+
+.period-title-banner{
+  background-color: rgba(248, 248, 248, 0.75);
+  margin: 0;
+  border-top-left-radius: 2px;;
+  border-top-right-radius: 2px;;
+  padding: 5px;
+}
+
+.period-title-banner h3{
+  margin: 0;
+}
+
+.period-background-overlay{
+  background-color: rgba(197, 197, 197, 0.4);
+}
+
+
+
+
+
+/* 
+COMPOSER CHECKBOXES
+*/
 .composer-checkbox {
   box-sizing: border-box;
   display: inline-block;
-  margin: 0.25em 0.5em;
+  margin: 0.5em 0.5em;
   padding: 0.25em 1em;
 
-  box-shadow: 2px 2px 3px grey;
+  box-shadow: var(--small-shadow-light);
   border-radius: 8px;
 
   cursor: pointer;
@@ -20,5 +62,19 @@
 }
 
 .composer-selected-false {
-  background-color: #c8c8c8;
+  background-color: rgba(199, 199, 199, 0.75);
+}
+
+
+
+/* 
+PERIODS
+*/
+
+.period-classical{
+  background-image: url("https://smhttp-ssl-39255.nexcesscdn.net/wp-content/uploads/2013/10/A-court-gathering-to-hear-music-845x321.jpg");
+}
+
+.period-baroque{
+  background-image: url("https://smhttp-ssl-39255.nexcesscdn.net/wp-content/uploads/2013/10/A-court-gathering-to-hear-music-845x321.jpg");
 }
