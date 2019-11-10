@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import { Link, Redirect } from "react-router-dom";
 
+// CONTEXT
 import {UserContext} from "../../state/UserProvider";
 
+// API
 import { signInUser } from "../../js/apiRequests";
 
 const UserSignIn = () => {
@@ -16,6 +18,7 @@ const UserSignIn = () => {
     e.preventDefault();
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
+    
 
     signInUser({ username, password }, sm);
   };

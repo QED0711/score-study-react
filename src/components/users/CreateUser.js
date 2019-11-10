@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 // API
 import { createUser } from "../../js/apiRequests";
 
+
 const CreateUser = () => {
   const { state: s, stateMethods: sm } = useContext(UserContext);
   const [passwordMatch, setPasswordMatch] = useState(null);
@@ -23,6 +24,7 @@ const CreateUser = () => {
       setPasswordMatch("no match");
     } else {
       setPasswordMatch("match");
+      // const hashedPassword = bcrypt.hashSync(password, salt);
       createUser({ username, email, password }, sm);
     }
   };
