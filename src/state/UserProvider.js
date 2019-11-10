@@ -6,7 +6,8 @@ export const UserContext = createContext(null);
 
 const state = {
     user: null,
-    signInError: null
+    signInError: null,
+    passwordChangeMessage: null,
 }
 
 const stateMethods = {
@@ -15,6 +16,9 @@ const stateMethods = {
     },
     setSignInError: function(signInError){
         this.setState({signInError})
+    },
+    setPasswordChangeMessage: function(passwordChangeMessage){
+        this.setState({passwordChangeMessage})
     }
 }
 

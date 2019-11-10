@@ -182,6 +182,10 @@ export const changeUserPassword = (userData, sm) => {
   };
 
   $.ajax(settings).done(function(response) {
-    console.log(response)
+    if(response.error){
+      sm.setPasswordChangeMessage({message: response.error})
+    } else {
+      sm.setPasswordChangeMessage({message: "Password successfully updated"})
+    }
   });
 };

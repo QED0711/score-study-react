@@ -17,7 +17,7 @@ const AccountSettings = () => {
         // api call here
     }
     
-    const handleChangePasswordSubmit = e => {
+    const handleChangePasswordSubmit = async e => {
         e.preventDefault();
 
         const currentPassword = document.getElementById("password").value
@@ -55,6 +55,11 @@ const AccountSettings = () => {
                 <br/>
 
                 <input type="submit" value="change Password" />
+                {
+                s.passwordChangeMessage 
+                &&
+                <h5>{s.passwordChangeMessage.message}</h5> 
+                }
             </form>
         </div>
     )
