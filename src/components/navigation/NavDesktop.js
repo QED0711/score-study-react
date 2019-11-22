@@ -13,7 +13,7 @@ const NavDesktop = () => {
       <Link to="/app">Application</Link>
       {/* {!s.user && <Link to="/create-account">Create Account</Link>} */}
       {s.user && <Link to="/logout">Logout</Link>}
-      {s.user && <Link to="/change-password">Change Password</Link>}
+      {s.user && <Link to="/account-settings">Account Settings</Link>}
       {s.user && s.user.authorization === "admin" && <Link to="/admin">Admin</Link>}
     </nav>
   );

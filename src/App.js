@@ -39,7 +39,7 @@ function App() {
               <Route exact path="/create-account">
                 <CreateUser />
               </Route>
-              <Route exact path="/change-password">
+              <Route exact path="/account-settings">
                 <AccountSettings />
               </Route>
               <Route exact path="/logout">
