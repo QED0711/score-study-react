@@ -189,3 +189,29 @@ export const changeUserPassword = (userData, sm) => {
     }
   });
 };
+
+
+/* 
+::::::::::::::::::::
+:: CREATE COMMENT ::
+::::::::::::::::::::
+*/
+
+export const createComment = (commentData, sm) => {
+  const settings = {
+    async: true,
+    crossDomain: true,
+    url: baseURL + "/comments/create",
+    method: "POST",
+    headers: {
+      "cache-control": "no-cache",
+      "Access-Control-Allow-Origin": true
+    },
+    processData: true,
+    data: commentData
+  };
+
+  $.ajax(settings).done(function(response) {
+    console.log(response)
+  });
+};

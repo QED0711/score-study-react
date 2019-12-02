@@ -4,13 +4,14 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.css";
 import "./css/navigation.css";
 import "./css/periods.css";
+import "./css/comments.css";
 
 import UserProvider from "./state/UserProvider";
 import ComposerProvider from './state/ComposerProvider';
 
 import NavDesktop from "./components/navigation/NavDesktop";
 import PeriodContainer from "./components/periods/PeriodContainer";
-import ScoreDisplay from "./components/ScoreDisplay";
+import ScoreDisplay from "./components/score/ScoreDisplay";
 import UserSignIn from "./components/users/UserSignIn";
 import CreateUser from "./components/users/CreateUser";
 import Logout from "./components/users/Logout";
