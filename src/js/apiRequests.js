@@ -215,3 +215,36 @@ export const createComment = (commentData, sm) => {
     console.log(response)
   });
 };
+
+/* 
+:::::::::::::::::::::::::::
+:: GET USER-WORK COMMENT ::
+:::::::::::::::::::::::::::
+*/
+
+// Gets a users comment on a specific work
+export const getUserWorkComment = (userWorkData, sm) => {
+  const settings = {
+    async: true,
+    crossDomain: true,
+    url: baseURL + "/comments/user-work-comments",
+    method: "POST",
+    headers: {
+      "cache-control": "no-cache",
+      "Access-Control-Allow-Origin": true
+    },
+    processData: true,
+    data: userWorkData
+  };
+
+  return new Promise(resolve => {
+    $.ajax(settings).done(function(response) {
+      if (response.length){
+        resolve(response[0])
+      } else {
+        resolve(null)
+      }
+    });
+  })
+
+};

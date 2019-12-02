@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 // STATE
 import { UserContext } from '../../state/UserProvider';
 import { ComposerContext } from '../../state/ComposerProvider';
 
 // API
-import { createComment } from '../../js/apiRequests'
+import { createComment, getUserWorkComment } from '../../js/apiRequests'
 
 const CommentModal = ({ setShowCommentModal, scoreURL }) => {
 
@@ -34,6 +34,25 @@ const CommentModal = ({ setShowCommentModal, scoreURL }) => {
         setShowCommentModal(false);
 
     }
+
+    useEffect(() => {
+        // on load, check if user has already submitted a comment for this work
+        // if so, pre-populate the comment box with their previous comment for editing
+        const checkForPreviousComments = async () => {
+            const previousComment = await getUserWorkComment({
+                userID: userState.user.userID,
+                workID: composerState.selectedScore._id
+            })
+            
+            document.getElementById("comment-content").value = previousComment ?
+            previousComment.content
+            :
+            ""
+        }
+
+        checkForPreviousComments();
+
+    })
 
     return (
         <div className="comment-modal-background">
