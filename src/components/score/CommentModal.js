@@ -1,16 +1,18 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 // STATE
 import { UserContext } from '../../state/UserProvider';
 import { ComposerContext } from '../../state/ComposerProvider';
 
 // API
-import { createComment, getUserWorkComment } from '../../js/apiRequests'
+import { createComment, getUserWorkComment, editComment } from '../../js/apiRequests'
 
 const CommentModal = ({ setShowCommentModal, scoreURL }) => {
 
     const { state: userState } = useContext(UserContext)
     const { state: composerState } = useContext(ComposerContext)
+
+    const [previousCommentID, setPreviousCommentID] = useState(null);
 
     const handleSaveComment = e => {
         // get comment content
@@ -27,6 +29,10 @@ const CommentModal = ({ setShowCommentModal, scoreURL }) => {
             scoreURL
         }
 
+        previousCommentID ?
+        // send request to edit previously existing
+        editComment({content, userID, commentID: previousCommentID})
+        :
         // send request to create the comment
         createComment(commentData)
 
@@ -43,6 +49,11 @@ const CommentModal = ({ setShowCommentModal, scoreURL }) => {
                 userID: userState.user.userID,
                 workID: composerState.selectedScore._id
             })
+
+            // save previous comment ID for later so we can edit instead of creating new
+            if (previousComment){
+                setPreviousCommentID(previousComment._id)
+            }
             
             document.getElementById("comment-content").value = previousComment ?
             previousComment.content

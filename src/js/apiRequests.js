@@ -248,3 +248,30 @@ export const getUserWorkComment = (userWorkData, sm) => {
   })
 
 };
+
+/* 
+::::::::::::::::::
+:: EDIT COMMENT ::
+::::::::::::::::::
+*/
+
+export const editComment = (data, sm) => {
+  const settings = {
+    async: true,
+    crossDomain: true,
+    url: baseURL + "/comments/edit-comment",
+    method: "POST",
+    headers: {
+      "cache-control": "no-cache",
+      "Access-Control-Allow-Origin": true
+    },
+    processData: true,
+    data: data
+  };
+
+  $.ajax(settings).done(function(response) {
+    console.log(response)
+  });
+
+};
+
