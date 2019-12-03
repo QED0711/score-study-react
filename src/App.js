@@ -16,6 +16,7 @@ import UserSignIn from "./components/users/UserSignIn";
 import CreateUser from "./components/users/CreateUser";
 import Logout from "./components/users/Logout";
 import AccountSettings from "./components/users/AccountSettings";
+import UserComments from "./components/comments/UserComments";
 
 function App() {
 
@@ -39,6 +40,9 @@ function App() {
               </Route>
               <Route exact path="/create-account">
                 <CreateUser />
+              </Route>
+              <Route exact path="/comments">
+                <UserComments />
               </Route>
               <Route exact path="/account-settings">
                 <AccountSettings />

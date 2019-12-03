@@ -29,6 +29,7 @@ const CommentModal = ({ setShowCommentModal, scoreURL }) => {
             scoreURL
         }
 
+        // If a user has already commented, update rather than create
         previousCommentID ?
         // send request to edit previously existing
         editComment({content, userID, commentID: previousCommentID})

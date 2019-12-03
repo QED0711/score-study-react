@@ -275,3 +275,29 @@ export const editComment = (data, sm) => {
 
 };
 
+/* 
+:::::::::::::::::::::::
+:: GET USER COMMENTS ::
+:::::::::::::::::::::::
+*/
+
+export const getUserComments = (data, sm) => {
+  const settings = {
+    async: true,
+    crossDomain: true,
+    url: baseURL + "/comments/user-comments",
+    method: "POST",
+    headers: {
+      "cache-control": "no-cache",
+      "Access-Control-Allow-Origin": true
+    },
+    processData: true,
+    data: data
+  };
+
+  $.ajax(settings).done(function(response) {
+    sm.setUserComments(response)
+  });
+
+};
+

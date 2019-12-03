@@ -8,6 +8,8 @@ const state = {
     user: null,
     signInError: null,
     passwordChangeMessage: null,
+
+    userComments: [],
 }
 
 const stateMethods = {
@@ -19,6 +21,10 @@ const stateMethods = {
     },
     setPasswordChangeMessage: function(passwordChangeMessage){
         this.setState({passwordChangeMessage})
+    },
+
+    setUserComments: function(userComments){
+        this.setState({userComments})
     }
 }
 
