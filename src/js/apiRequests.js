@@ -73,7 +73,7 @@ export const getWorkByID = (workData, stateMethods) => {
   };
 
   $.ajax(settings).done(function(response) {
-    console.log(response);
+    stateMethods.setSelectedScore(response);
   });
 };
 

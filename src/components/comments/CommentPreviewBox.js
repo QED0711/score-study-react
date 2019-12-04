@@ -1,29 +1,25 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 
 // STATE
-import {UserContext} from '../../state/UserProvider';
+import { ComposerContext } from '../../state/ComposerProvider';
 
 // API
-import {getWorkByID} from '../../js/apiRequests'
+import { getWorkByID } from '../../js/apiRequests'
 
-const CommentPreviewBox = ({comment}) => {
+const CommentPreviewBox = ({ comment }) => {
 
-    console.log(comment)
+    const { stateMethods: csm } = useContext(ComposerContext);
+    
     const handleClick = e => {
-        window.open(comment.scoreURL)
+        getWorkByID({ workID: comment.workID }, csm)
     }
 
-    const handleEditComment = comment => e => {
-        getWorkByID({workID: comment.workID})
-    }
-
-    return(
+    return (
         <div className="comment-preview-box">
             <p className="comment-text comment-work-id">{comment.workID}</p>
             <p className="comment-text comment-content">{comment.content}</p>
-            
+
             <button onClick={handleClick}>See Score</button>
-            <button onClick={handleEditComment(comment)}>Edit Comment</button>
         </div>
     )
 
