@@ -42,3 +42,38 @@
     
     font-size: 1.25rem;
 }
+
+
+
+
+/* USER COMMENTS */
+.user-comments-container{
+    width: var(--primary-container-width);
+    margin: 2em auto 0;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1em;
+
+    height: auto;
+    max-height: 50em;
+    overflow-y: auto;
+}
+
+.comment-preview-box{
+    box-sizing: border-box;
+    padding: 0.5em 1em;
+    
+    border-radius: 4px;
+    box-shadow: var(--small-shadow-light);
+    
+    text-align: center;
+}
+
+.comment-text{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: calc(100% - 2em);
+    margin: 0.5em auto;
+}

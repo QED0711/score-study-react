@@ -53,6 +53,31 @@ export const getComposerWorks = (composersArr, setScores) => {
 };
 
 /* 
+::::::::::::::::::::
+:: GET WORK BY ID ::
+::::::::::::::::::::
+*/
+
+export const getWorkByID = (workData, stateMethods) => {
+  const settings = {
+    async: true,
+    crossDomain: true,
+    url: baseURL + "/work",
+    method: "POST",
+    headers: {
+      "cache-control": "no-cache",
+      "Access-Control-Allow-Origin": true
+    },
+    processData: true,
+    data: workData
+  };
+
+  $.ajax(settings).done(function(response) {
+    console.log(response);
+  });
+};
+
+/* 
 :::::::::::::::::::
 :: GET COMPOSERS ::
 :::::::::::::::::::

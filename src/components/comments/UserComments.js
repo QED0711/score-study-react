@@ -11,6 +11,7 @@ import {Redirect} from 'react-router-dom';
 
 // COMPONENTS
 import CommentPreviewBox from './CommentPreviewBox';
+import ScoreDisplay from '../score/ScoreDisplay';
 
 const UserComments = () => {
 
@@ -29,19 +30,18 @@ const UserComments = () => {
         state.user
         &&
         getUserComments({userID: state.user.userID}, stateMethods)
-    })
-
-
-    
-
+    }, [])
 
     if(!state.user){
         return <Redirect to="/" />
     } else {
         return (
+            <>
             <div className="container user-comments-container">
                 {renderComments(state.userComments)}
             </div>
+            <ScoreDisplay />
+            </>
         )
     }
 
