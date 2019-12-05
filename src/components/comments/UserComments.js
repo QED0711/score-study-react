@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 
 // STATE
 import { UserContext } from '../../state/UserProvider';
+import { ComposerContext } from '../../state/ComposerProvider';
 
 // API
 import { getUserComments } from '../../js/apiRequests';
@@ -16,6 +17,7 @@ import ScoreDisplay from '../score/ScoreDisplay';
 const UserComments = () => {
 
     const { state, stateMethods } = useContext(UserContext);
+    const { state: composerState } = useContext(ComposerContext);
 
     // HELPERS
     const renderComments = (comments) => {
@@ -40,7 +42,7 @@ const UserComments = () => {
             <div className="container user-comments-container">
                 {renderComments(state.userComments)}
             </div>
-            <ScoreDisplay />
+            <ScoreDisplay scoreURL={composerState.selectedScoreURL} />
             </>
         )
     }

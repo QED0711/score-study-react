@@ -11,7 +11,9 @@ const state = {
   composers: null,
   selectedComposers: [],
   scores: [],
-  selectedScore: null
+  selectedScore: null,
+
+  selectedScoreURL: null, // used only with comments that provide a direct (not generated) score url
 };
 
 // ----------------------- STATE METHODS -----------------------
@@ -32,6 +34,10 @@ const stateMethods = {
   setSelectedScore: function(selectedScore) {
     console.log(selectedScore);
     this.setState({ selectedScore });
+  },
+
+  setSelectedScoreURL: function(scoreURL){
+    this.setState({selectedScoreURL: scoreURL})
   }
 };
 

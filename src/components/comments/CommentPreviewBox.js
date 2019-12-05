@@ -12,6 +12,7 @@ const CommentPreviewBox = ({ comment }) => {
     
     const handleClick = e => {
         getWorkByID({ workID: comment.workID }, csm)
+        csm.setSelectedScoreURL(comment.scoreURL)
     }
 
     return (

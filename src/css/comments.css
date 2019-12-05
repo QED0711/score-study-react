@@ -58,6 +58,8 @@
     height: auto;
     max-height: 50em;
     overflow-y: auto;
+
+    padding: 1em;
 }
 
 .comment-preview-box{
