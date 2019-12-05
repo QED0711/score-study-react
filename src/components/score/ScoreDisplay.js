@@ -49,7 +49,7 @@ const ScoreDisplay = ({ scoreURL }) => {
         </>
       }
 
-
+      
       <button>
         See Answer
       </button>

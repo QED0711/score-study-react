@@ -42,6 +42,10 @@ const CommentModal = ({ setShowCommentModal, scoreURL }) => {
 
     }
 
+    const handleCancelClick = e => {
+        setShowCommentModal(false);
+    }
+
     useEffect(() => {
         // on load, check if user has already submitted a comment for this work
         // if so, pre-populate the comment box with their previous comment for editing
@@ -71,7 +75,7 @@ const CommentModal = ({ setShowCommentModal, scoreURL }) => {
             <div className="comment-modal-content">
                 <h3>Comment</h3>
                 <textarea id="comment-content"></textarea>
-                <button>
+                <button onClick={handleCancelClick}>
                     Cancel
                 </button>
                 <button onClick={handleSaveComment}>

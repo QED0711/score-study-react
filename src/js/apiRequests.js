@@ -326,3 +326,30 @@ export const getUserComments = (data, sm) => {
 
 };
 
+/* 
+::::::::::::::::::::
+:: DELETE COMMENT ::
+::::::::::::::::::::
+*/
+
+export const deleteComment = (data, sm) => {
+  const settings = {
+    async: true,
+    crossDomain: true,
+    url: baseURL + "/comments/delete-comment",
+    method: "POST",
+    headers: {
+      "cache-control": "no-cache",
+      "Access-Control-Allow-Origin": true
+    },
+    processData: true,
+    data: data
+  };
+
+  $.ajax(settings).done(function(response) {
+    console.log(response)
+    // add code here to remove deleted comment or refetch comments
+  });
+
+};
+
