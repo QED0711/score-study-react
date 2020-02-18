@@ -5,20 +5,26 @@ import { UserContext } from "../../state/UserProvider";
 
 // COMPONTENTS
 import CommentModal from './CommentModal';
+import OtherCommentsModal from './OtherCommentsModal'
 
 const ScoreDisplay = ({ scoreURL }) => {
+
+  // STATE
   const { state: composerState } = useContext(ComposerContext);
   const { state: userState } = useContext(UserContext);
 
   const [pdf, setPdf] = useState(null);
   const [showCommentModal, setShowCommentModal] = useState(false);
+  const [showOtherCommentsModal, setShowOtherCommentsModal] = useState(false);
 
+
+  // EVENTS
   const handleCommentClick = e => {
     setShowCommentModal(true);
   }
 
   const handleShowOtherComments = e => {
-    
+    setShowOtherCommentsModal(true)
   }
 
   useEffect(() => {
@@ -47,13 +53,13 @@ const ScoreDisplay = ({ scoreURL }) => {
           <button onClick={handleCommentClick}>
             Comment
           </button>
-          <button>
+          <button onClick={handleShowOtherComments}>
             See Other Comments
           </button>
         </>
       }
 
-      
+
       <button>
         See Answer
       </button>
@@ -73,6 +79,12 @@ const ScoreDisplay = ({ scoreURL }) => {
           setShowCommentModal={setShowCommentModal}
           scoreURL={scoreURL ? scoreURL : `${pdf}#page=${pageNum}&toolbar=0&navpanes=1&scrollbar=0`}
         />
+      }
+
+      {
+        showOtherCommentsModal
+        &&
+        <OtherCommentsModal setShowOtherCommentsModal={setShowOtherCommentsModal} />
       }
     </div>
   );

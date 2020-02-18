@@ -14,6 +14,8 @@ const state = {
   selectedScore: null,
 
   selectedScoreURL: null, // used only with comments that provide a direct (not generated) score url
+
+  selectedScoreComments: null
 };
 
 // ----------------------- STATE METHODS -----------------------
@@ -33,11 +35,18 @@ const stateMethods = {
 
   setSelectedScore: function(selectedScore) {
     console.log(selectedScore);
-    this.setState({ selectedScore });
+    this.setState({ 
+      selectedScore,
+      selectedScoreComments: null
+     });
   },
 
   setSelectedScoreURL: function(scoreURL){
     this.setState({selectedScoreURL: scoreURL})
+  },
+
+  setSelectedScoreComments: function(comments) {
+    this.setState({selectedScoreComments: comments})
   }
 };
 

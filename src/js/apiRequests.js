@@ -353,3 +353,30 @@ export const deleteComment = (data, sm) => {
 
 };
 
+
+/* 
+::::::::::::::::::::::::
+:: GET OTHER COMMENTS ::
+::::::::::::::::::::::::
+*/
+
+export const getWorkComments = (data, sm) => {
+  const settings = {
+    async: true,
+    crossDomain: true,
+    url: baseURL + "/comments/work-comments",
+    method: "POST",
+    headers: {
+      "cache-control": "no-cache",
+      "Access-Control-Allow-Origin": true
+    },
+    processData: true,
+    data: data
+  };
+
+  $.ajax(settings).done(function(response) {
+    sm.setSelectedScoreComments(response)
+  });
+
+};
+
