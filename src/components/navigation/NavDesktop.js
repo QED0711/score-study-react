@@ -2,10 +2,15 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import {UserContext} from "../../state/UserProvider";
+import { ComposerContext } from "../../state/ComposerProvider";
 
 const NavDesktop = () => {
   const { state: s, stateMethods: sm } = useContext(UserContext);
+  const {state: cs, stateMethods: csm} = useContext(ComposerContext);
 
+  const resetSelectedComposers = () => {
+    csm.setSelectedComposers([])
+  }
   return (
     <nav className="navbar navbar-desktop">
       {!s.user && <Link to="/sign-in">Sign In</Link>}

@@ -31,9 +31,14 @@ const ComposerCheckbox = ({ composer }) => {
     };
   };
 
+  const renderChecked = composer => {
+    if (!s.selectedComposers) return false
+    return s.selectedComposers.includes(composer.composer)
+  }
+
   return (
     <div
-      className="composer-checkbox composer-selected-false"
+      className={`composer-checkbox composer-selected-${renderChecked(composer)}`}
       onClick={handleClickV2(composer)}
     >
       {composer.displayName}

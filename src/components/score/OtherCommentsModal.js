@@ -32,7 +32,7 @@ const OtherCommentsModeal = ({ setShowOtherCommentsModal }) => {
                     <OtherCommentCards comments={cs.selectedScoreComments} />
                 }
 
-
+                
 
                 <button onClick={closeModal}>
                     Close
