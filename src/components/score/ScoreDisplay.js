@@ -17,6 +17,10 @@ const ScoreDisplay = ({ scoreURL }) => {
     setShowCommentModal(true);
   }
 
+  const handleShowOtherComments = e => {
+    
+  }
+
   useEffect(() => {
     if (composerState.selectedScore) {
       if (!scoreURL) { // if no score url has been provided, generate one

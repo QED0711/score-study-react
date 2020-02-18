@@ -41,6 +41,8 @@
     box-shadow: 2px 2px 5px rgb(78, 78, 78) inset;
     
     font-size: 1.25rem;
+
+
 }
 
 
@@ -70,6 +72,11 @@
     box-shadow: var(--small-shadow-light);
     
     text-align: center;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* max-width: 20em; */
 }
 
 .comment-text{
