@@ -24,8 +24,8 @@ const OtherCommentsModeal = ({ setShowOtherCommentsModal }) => {
     }, [])
 
     return (
-        <div className="comment-modal-background">
-            <div className="comment-modal-content">
+        <div className="modal-background">
+            <div className="modal-body">
                 {
                     cs.selectedScoreComments
                     &&

@@ -6,6 +6,7 @@ import { UserContext } from "../../state/UserProvider";
 // COMPONTENTS
 import CommentModal from './CommentModal';
 import OtherCommentsModal from './OtherCommentsModal'
+import AnswerModal from './AnswerModal';
 
 const ScoreDisplay = ({ scoreURL }) => {
 
@@ -16,7 +17,7 @@ const ScoreDisplay = ({ scoreURL }) => {
   const [pdf, setPdf] = useState(null);
   const [showCommentModal, setShowCommentModal] = useState(false);
   const [showOtherCommentsModal, setShowOtherCommentsModal] = useState(false);
-
+  const [showAnswerModal, setShowAnswerModal] = useState(false)
 
   // EVENTS
   const handleCommentClick = e => {
@@ -25,6 +26,10 @@ const ScoreDisplay = ({ scoreURL }) => {
 
   const handleShowOtherComments = e => {
     setShowOtherCommentsModal(true)
+  }
+
+  const handleShowAnswer = e => {
+    setShowAnswerModal(true)
   }
 
   useEffect(() => {
@@ -60,7 +65,7 @@ const ScoreDisplay = ({ scoreURL }) => {
       }
 
 
-      <button>
+      <button onClick={handleShowAnswer}>
         See Answer
       </button>
 
@@ -85,6 +90,12 @@ const ScoreDisplay = ({ scoreURL }) => {
         showOtherCommentsModal
         &&
         <OtherCommentsModal setShowOtherCommentsModal={setShowOtherCommentsModal} />
+      }
+      
+      {
+        showAnswerModal
+        &&
+        <AnswerModal setShowAnswerModal={setShowAnswerModal} selectedScore={composerState.selectedScore} />
       }
     </div>
   );

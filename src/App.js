@@ -5,6 +5,7 @@ import "./App.css";
 import "./css/navigation.css";
 import "./css/periods.css";
 import "./css/comments.css";
+import "./css/modals.css";
 
 import UserProvider from "./state/UserProvider";
 import ComposerProvider from './state/ComposerProvider';
