@@ -15,11 +15,17 @@ const ScoreDisplay = ({ scoreURL }) => {
   const { state: userState } = useContext(UserContext);
 
   const [pdf, setPdf] = useState(null);
+  const [showGenresModal, setShowGenresModal] = useState(false);
   const [showCommentModal, setShowCommentModal] = useState(false);
   const [showOtherCommentsModal, setShowOtherCommentsModal] = useState(false);
-  const [showAnswerModal, setShowAnswerModal] = useState(false)
+  const [showAnswerModal, setShowAnswerModal] = useState(false);
 
   // EVENTS
+
+  const handleShowGenresModal = e => {
+    setShowGenresModal(true)
+  }
+
   const handleCommentClick = e => {
     setShowCommentModal(true);
   }
@@ -64,6 +70,10 @@ const ScoreDisplay = ({ scoreURL }) => {
         </>
       }
 
+
+      <button onClick={handleShowGenresModal}>
+        Filter Genres
+      </button>
 
       <button onClick={handleShowAnswer}>
         See Answer

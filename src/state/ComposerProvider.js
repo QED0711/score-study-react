@@ -1,6 +1,8 @@
 import React, { Component, createContext } from "react";
 import bindStateMethods from "./bindStateMethods";
-import { thisExpression } from "@babel/types";
+
+// ----------------------- HELPERS -----------------------
+import processGenres from '../js/processGenres';
 
 // ----------------------- CONTEXT -----------------------
 
@@ -11,6 +13,7 @@ const state = {
   composers: null,
   selectedComposers: [],
   scores: [],
+  genres: null,
   selectedScore: null,
 
   selectedScoreURL: null, // used only with comments that provide a direct (not generated) score url
@@ -30,7 +33,8 @@ const stateMethods = {
   },
 
   setScores: function(scores) {
-    this.setState({ scores });
+    const genres = processGenres(scores)
+    this.setState({ scores, genres });
   },
 
   setSelectedScore: function(selectedScore) {

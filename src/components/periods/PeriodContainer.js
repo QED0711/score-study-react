@@ -12,6 +12,7 @@ import {
 import randomScore from "../../js/randomScore";
 
 import Period from "./Period";
+import GenreFilter from './GenreFilter'
 
 const PeriodContainer = () => {
 
@@ -41,6 +42,10 @@ const PeriodContainer = () => {
           <Period title={"Classical"} era={"classical"} composers={cs.composers} />
           <Period title={"Romantic"} era={"romantic"} composers={cs.composers} />
           <Period title={"20th Century"} era={"20th"} composers={cs.composers} />
+
+          {!!cs.scores.length && <GenreFilter />}
+          
+
         </div>
       )}
       {!!cs.selectedComposers.length && (
