@@ -38,9 +38,9 @@ PERIOD
 
 
 /* 
-COMPOSER CHECKBOXES
+CHECKBOXES
 */
-.composer-checkbox {
+.composer-checkbox, .genre-checkbox {
   box-sizing: border-box;
   display: inline-block;
   margin: 0.5em 0.5em;
@@ -57,11 +57,11 @@ COMPOSER CHECKBOXES
   user-select: none;
 }
 
-.composer-selected-true {
+.composer-selected-true, .genre-selected-true {
   background-color: #64cccc;
 }
 
-.composer-selected-false {
+.composer-selected-false, .genre-selected-false{
   background-color: rgba(199, 199, 199, 0.75);
 }
 
@@ -77,4 +77,11 @@ PERIODS
 
 .period-baroque{
   background-image: url("https://smhttp-ssl-39255.nexcesscdn.net/wp-content/uploads/2013/10/A-court-gathering-to-hear-music-845x321.jpg");
+}
+
+
+/* GENRES */
+
+.genre-list{
+  overflow-y: auto;
 }
