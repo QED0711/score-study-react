@@ -1,14 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 // STATE
 import { ComposerContext } from '../../state/ComposerProvider';
 
 
-const GenreList = ({ genres }) => {
+const GenreList = ({ genres, genreSearch }) => {
 
     // STATE
     const { state: cs, stateMethods: csm } = useContext(ComposerContext);
 
+    const [filteredGenres, setFilteredGenres] = useState(genres);
 
     // EVENTS
     const handleGenreSelected = genre => e => {
@@ -33,9 +34,19 @@ const GenreList = ({ genres }) => {
         })
     }
 
+    // ON LOAD
+    useEffect(() => {
+
+        const pattern = new RegExp(genreSearch,"gi")
+        setFilteredGenres(
+            genres.filter(genre => pattern.test(genre[0]))
+        )
+
+    }, [genreSearch])
+
     return (
         <div className="genre-list">
-            {generateList(genres)}
+            {generateList(filteredGenres)}
         </div>
     )
 }
