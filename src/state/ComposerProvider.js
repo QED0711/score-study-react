@@ -58,12 +58,16 @@ const stateMethods = {
   setSelectedGenres: function(selectedGenres){
 
     // filter scores based on selected genre
-    const filteredScores = this.state.scores.filter(score => {
+    const filteredScores = selectedGenres.length 
+    ?
+    this.state.scores.filter(score => {
       for (let genre of selectedGenres){
         if(score.tags.includes(genre)) return true;
       }
       return false
     })
+    :
+    this.state.scores
 
     this.setState({selectedGenres, filteredScores})
   },
