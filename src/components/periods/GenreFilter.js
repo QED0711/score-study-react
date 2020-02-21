@@ -15,8 +15,6 @@ const GenreFilter = () => {
         setShowGenreModal(true)
     }
 
-    console.log({ genres: cs.genres })
-
     return (
         <div className="genre-filter">
             <button onClick={handleShowGenresModal}>

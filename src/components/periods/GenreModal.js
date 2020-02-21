@@ -21,7 +21,7 @@ const GenreModal = ({setShowGenreModal, genres}) => {
         <div className="modal-background">
             <div className="modal-body">
 
-                <input type="text" value={genreSearch} onChange={e => setGenreSearch(e.target.value)} />
+                <input type="text" value={genreSearch} onChange={e => setGenreSearch(e.target.value)} placeholder="Search genres..." />
 
                 <GenreList genres={formatGenres(genres)} genreSearch={genreSearch} />
 

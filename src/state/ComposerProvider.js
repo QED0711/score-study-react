@@ -15,6 +15,9 @@ const state = {
   scores: [],
   genres: null,
   selectedGenres: [],
+
+  filteredScores: [],
+
   selectedScore: null,
 
   selectedScoreURL: null, // used only with comments that provide a direct (not generated) score url
@@ -35,11 +38,38 @@ const stateMethods = {
 
   setScores: function(scores) {
     const genres = processGenres(scores)
-    this.setState({ scores, genres });
+
+    // if some genres have already been defined, then filter scores on those genres
+    const filteredScores = this.state.selectedGenres.length 
+    ? 
+    scores.filter(score => {
+      for (let genre of this.state.selectedGenres){
+        if(score.tags.includes(genre)) return true;
+      }
+      return false
+    })
+    :
+    scores
+
+
+    this.setState({ scores, genres, filteredScores });
   },
 
   setSelectedGenres: function(selectedGenres){
-    this.setState({selectedGenres})
+
+    // filter scores based on selected genre
+    const filteredScores = this.state.scores.filter(score => {
+      for (let genre of selectedGenres){
+        if(score.tags.includes(genre)) return true;
+      }
+      return false
+    })
+
+    this.setState({selectedGenres, filteredScores})
+  },
+
+  setFilteredScores: function(filteredScores) {
+    this.setState({filteredScores});
   },
 
   setSelectedScore: function(selectedScore) {
