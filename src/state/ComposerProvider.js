@@ -52,7 +52,14 @@ const stateMethods = {
     scores
 
 
-    this.setState({ scores, genres, filteredScores });
+    this.setState({ scores, genres, filteredScores }, () => {
+      // in the event that the user changes composer selection without updating genre filters first
+      // and this change causes there to be no scores that match the new composer selection and the previous genre selection
+      // then we remove all previous selected genres and set the filtered scores to all scores by the new composer selection
+      if(!this.state.filteredScores.length && this.state.selectedGenres.length){
+        this.setState({selectedGenres: [], filteredScores: scores})
+      }
+    });
   },
 
   setSelectedGenres: function(selectedGenres){
@@ -73,7 +80,7 @@ const stateMethods = {
   },
 
   setFilteredScores: function(filteredScores) {
-    this.setState({filteredScores});
+      this.setState({filteredScores});
   },
 
   setSelectedScore: function(selectedScore) {

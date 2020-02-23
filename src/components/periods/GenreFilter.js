@@ -7,7 +7,7 @@ import GenreModal from './GenreModal'
 const GenreFilter = () => {
 
     // STATE
-    const { state: cs } = useContext(ComposerContext);
+    const { state: cs, stateMethods: csm } = useContext(ComposerContext);
     const [showGenreModal, setShowGenreModal] = useState(false)
 
     // EVENTS
@@ -23,7 +23,7 @@ const GenreFilter = () => {
             {
                 showGenreModal
                 &&
-                <GenreModal setShowGenreModal={setShowGenreModal} genres={cs.genres} />
+                <GenreModal setShowGenreModal={setShowGenreModal} genres={cs.genres} setSelectedGenres={csm.setSelectedGenres} />
             }
         </div>
     )

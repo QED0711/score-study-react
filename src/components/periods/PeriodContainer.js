@@ -30,6 +30,7 @@ const PeriodContainer = () => {
     } else {
       csm.setScores([]);
     }
+    
   }, [cs.selectedComposers]);
 
   return (
@@ -48,7 +49,9 @@ const PeriodContainer = () => {
 
         </div>
       )}
-      {!!cs.selectedComposers.length && (
+      {
+      !!cs.selectedComposers.length ?
+        !!cs.filteredScores.length ?
         <button
           onClick={e => {
             randomScore(cs.filteredScores, csm.setSelectedScore);
@@ -56,7 +59,12 @@ const PeriodContainer = () => {
         >
           New Score
         </button>
-      )}
+
+      :
+      <h4>No scores match your seach. Try checking your genre filters</h4>
+      :
+      <h4>Please select at least one composer.</h4>
+    }
     </div>
   );
 };
