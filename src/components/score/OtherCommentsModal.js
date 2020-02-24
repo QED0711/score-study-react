@@ -6,6 +6,7 @@ import { ComposerContext } from '../../state/ComposerProvider'
 // API
 import {getWorkComments} from "../../js/apiRequests"
 import OtherCommentCards from './OtherCommentsCards'
+import CloseModal from '../CloseModal'
 
 const OtherCommentsModeal = ({ setShowOtherCommentsModal }) => {
 
@@ -19,24 +20,19 @@ const OtherCommentsModeal = ({ setShowOtherCommentsModal }) => {
 
     // ON LOAD
     useEffect(() => {
-        console.log(cs)
         getWorkComments({workID: cs.selectedScore._id}, csm)
     }, [])
 
     return (
         <div className="modal-background">
             <div className="modal-body">
+                <CloseModal handleClose={closeModal} />
                 {
                     cs.selectedScoreComments
                     &&
                     <OtherCommentCards comments={cs.selectedScoreComments} />
                 }
 
-                
-
-                <button onClick={closeModal}>
-                    Close
-                </button>
             </div>
         </div>
     )

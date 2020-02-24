@@ -6,7 +6,7 @@ const OtherCommentCards = ({ comments }) => {
 
         return comments.map((comment, i) => {
             return(
-                <div className="comment-card">
+                <div key={i} className="comment-card">
                     {comment.content}
                 </div>
             )

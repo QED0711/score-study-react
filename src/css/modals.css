@@ -38,3 +38,44 @@
 }
 
 
+
+/* CLOSE MODAL ICON */
+
+.modal-close-icon{
+    /* display: inline-block; */
+    height: 1.5rem;
+    width: 1.5rem;
+    background-image: url("../media/close-24px.svg");
+    background-size: contain;
+    
+    /* padding: 0.1rem; */
+
+    border: 2px solid black;
+    border-radius: 100%;
+    
+    position: relative;
+    left: calc(100% - 1rem);
+    top: -0.5rem;
+
+    cursor: pointer;
+
+    
+    
+}
+
+.modal-close-icon:hover{
+    animation-name: shadow-grow;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes shadow-grow{
+    from{
+        box-shadow: 0 0 0 black;
+    }
+    to{
+        box-shadow: var(--medium-shadow-light);
+    }
+}
+
+

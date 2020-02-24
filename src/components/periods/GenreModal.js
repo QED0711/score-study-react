@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 
 import GenreList from './GenreList'
+import CloseModal from '../CloseModal';
 
 const GenreModal = ({setShowGenreModal, genres, setSelectedGenres}) => {
     
@@ -24,15 +25,11 @@ const GenreModal = ({setShowGenreModal, genres, setSelectedGenres}) => {
     return (
         <div className="modal-background">
             <div className="modal-body">
-
+                <CloseModal handleClose={handleCloseGenreModal} />
                 <input type="text" value={genreSearch} onChange={e => setGenreSearch(e.target.value)} placeholder="Search genres..." />
                 <button onClick={handleResetGenres}>Reset</button>
 
                 <GenreList genres={formatGenres(genres)} genreSearch={genreSearch} />
-
-                <button onClick={handleCloseGenreModal}>
-                    Close
-                </button>
             </div>
 
         </div>
