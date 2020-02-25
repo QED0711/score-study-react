@@ -13,10 +13,18 @@ const Period = ({ title, era, composers }) => {
     return <ComposerCheckbox key={i} composer={composer} />;
   });
 
+
+  // HELPERS
+  const selectAllFromPeriod = e => {
+    const periodComposers = document.querySelectorAll(`.period-${era} .composer-selected-false`)
+    periodComposers.forEach(composer => composer.click())
+  }
+
   return (
     <section className={`period period-${era}`}>
       <div className="period-title-banner">
-        <h3>{title}</h3>
+        <h3 className="period-title">{title}</h3>
+        <button onClick={selectAllFromPeriod}>Select All</button>
       </div>
       <div className="period-background-overlay">
         <div className="period-checkboxes">

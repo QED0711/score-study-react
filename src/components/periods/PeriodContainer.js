@@ -38,7 +38,7 @@ const PeriodContainer = () => {
       {us.user && <h3>Signed in as {us.user.username}</h3>}
       {cs.composers && (
         <div>
-          <Period title={"Medieval & Ren."} era={"early"} composers={cs.composers}/>
+          <Period title={"Medieval & Renaissance"} era={"early"} composers={cs.composers}/>
           <Period title={"Baroque"} era={"baroque"} composers={cs.composers} />
           <Period title={"Classical"} era={"classical"} composers={cs.composers} />
           <Period title={"Romantic"} era={"romantic"} composers={cs.composers} />
