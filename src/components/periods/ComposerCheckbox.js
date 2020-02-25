@@ -40,6 +40,7 @@ const ComposerCheckbox = ({ composer }) => {
     <div
       className={`composer-checkbox composer-selected-${renderChecked(composer)}`}
       onClick={handleClickV2(composer)}
+      data-fullname={composer.composer}
     >
       {composer.displayName}
     </div>

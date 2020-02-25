@@ -57,7 +57,7 @@ const PeriodContainer = () => {
             randomScore(cs.filteredScores, csm.setSelectedScore);
           }}
         >
-          New Score
+          New Score ({cs.filteredScores.length})
         </button>
 
       :
