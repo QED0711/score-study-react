@@ -70,7 +70,6 @@ const ScoreDisplay = ({ scoreURL }) => {
       </button>
 
       <br />
-      {composerState.filteredScores.length}
 
       <iframe
         src={scoreURL ? scoreURL : `${pdf}#page=${pageNum}&toolbar=0&navpanes=1&scrollbar=0`}
