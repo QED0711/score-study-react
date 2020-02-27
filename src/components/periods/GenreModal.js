@@ -29,6 +29,10 @@ const GenreModal = ({setShowGenreModal, genres, setSelectedGenres}) => {
                 <input type="text" value={genreSearch} onChange={e => setGenreSearch(e.target.value)} placeholder="Search genres..." />
                 <button onClick={handleResetGenres}>Reset</button>
 
+                <div>
+                    <h3>Available Genres</h3>
+                </div>
+
                 <GenreList genres={formatGenres(genres)} genreSearch={genreSearch} />
             </div>
 

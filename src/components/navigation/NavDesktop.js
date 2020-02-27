@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
-import {UserContext} from "../../state/UserProvider";
+import { UserContext } from "../../state/UserProvider";
 import { ComposerContext } from "../../state/ComposerProvider";
 
 const NavDesktop = () => {
   const { state: s, stateMethods: sm } = useContext(UserContext);
-  const {state: cs, stateMethods: csm} = useContext(ComposerContext);
+  const { state: cs, stateMethods: csm } = useContext(ComposerContext);
 
   // HELPERS
   const resetSelectedComposers = () => {
@@ -27,6 +27,8 @@ const NavDesktop = () => {
       {s.user && <Link to="/account-settings">Account Settings</Link>}
       {s.user && <Link to="/logout">Logout</Link>}
       {s.user && s.user.authorization === "admin" && <Link to="/admin">Admin</Link>}
+
+      {s.user && <em>Signed in as: {s.user.username}</em>}
     </nav>
   );
 };

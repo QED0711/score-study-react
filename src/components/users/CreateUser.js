@@ -65,6 +65,13 @@ const CreateUser = () => {
         * An email address is optional, and it will only be used to verify your
         identity in the event that you lose access to your account.
       </h5>
+
+        {
+          s.createUserError 
+          &&
+          <h3 className="user-error">{s.createUserError}</h3>
+        }
+
     </div>
   );
 };

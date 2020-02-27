@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import "./App.css";
+import "./css/user.css";
 import "./css/navigation.css";
 import "./css/periods.css";
 import "./css/comments.css";

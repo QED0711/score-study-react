@@ -124,7 +124,7 @@ export const createUser = (userData, sm) => {
 
   $.ajax(settings).done(function(response) {
     if (response.error) {
-      
+      sm.setCreateUserError(response.error)
     } else {
       console.log(response)
       sm.setUser(response)
