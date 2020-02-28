@@ -56,16 +56,16 @@ const ScoreDisplay = ({ scoreURL }) => {
         userState.user
         &&
         <>
-          <button onClick={handleCommentClick}>
+          <button className="btn" onClick={handleCommentClick}>
             Comment
           </button>
-          <button onClick={handleShowOtherComments}>
+          <button className="btn" onClick={handleShowOtherComments}>
             See Other Comments
           </button>
         </>
       }
 
-      <button onClick={handleShowAnswer}>
+      <button className="btn" onClick={handleShowAnswer}>
         See Answer
       </button>
 

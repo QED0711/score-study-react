@@ -17,7 +17,7 @@ const GenreFilter = () => {
 
     return (
         <div className="genre-filter">
-            <button onClick={handleShowGenresModal}>
+            <button className="btn" onClick={handleShowGenresModal}>
                 Filter Genres
             </button>
             {

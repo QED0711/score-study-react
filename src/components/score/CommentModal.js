@@ -75,10 +75,10 @@ const CommentModal = ({ setShowCommentModal, scoreURL }) => {
             <div className="modal-body">
                 <h3>Comment</h3>
                 <textarea id="comment-content"></textarea>
-                <button onClick={handleCancelClick}>
+                <button className="btn" onClick={handleCancelClick}>
                     Cancel
                 </button>
-                <button onClick={handleSaveComment}>
+                <button className="btn" onClick={handleSaveComment}>
                     Save Comment
                 </button>
             </div>

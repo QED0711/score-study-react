@@ -51,8 +51,8 @@ const Period = ({ title, era, composers }) => {
     <section className={`period period-${era}`}>
       <div className="period-title-banner">
         <h3 className="period-title">{title}</h3>
-        <button onClick={selectAllFromPeriod} disabled={allSelected}>Select All</button>
-        <button onClick={clearAllFromPeriod} disabled={!anySelected}>Clear Selections</button>
+        <button className="btn" onClick={selectAllFromPeriod} disabled={allSelected}>Select All</button>
+        <button className="btn" onClick={clearAllFromPeriod} disabled={!anySelected}>Clear Selections</button>
       </div>
       <div className="period-background-overlay">
         <div className="period-checkboxes">

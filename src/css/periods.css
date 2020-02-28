@@ -12,7 +12,8 @@ PERIOD
   border-radius: 2px;
   box-shadow: var(--medium-shadow-light);
 
-  background-size: contain;
+  background-size: cover;
+  background-position: center center;
   
 
 }
@@ -30,7 +31,7 @@ PERIOD
 }
 
 .period-background-overlay{
-  background-color: rgba(197, 197, 197, 0.4);
+  background-color: rgba(153, 153, 153, 0.6);
 }
 
 
@@ -46,7 +47,7 @@ CHECKBOXES
   margin: 0.5em 0.5em;
   padding: 0.25em 1em;
 
-  box-shadow: var(--small-shadow-light);
+  box-shadow: var(--medium-shadow-light);
   border-radius: 8px;
 
   cursor: pointer;
@@ -58,11 +59,11 @@ CHECKBOXES
 }
 
 .composer-selected-true, .genre-selected-true {
-  background-color: #64cccc;
+  background-color: var(--accent-blue);
 }
 
 .composer-selected-false, .genre-selected-false{
-  background-color: rgba(199, 199, 199, 0.75);
+  background-color: rgba(199, 199, 199, 0.9);
 }
 
 
@@ -71,12 +72,24 @@ CHECKBOXES
 PERIODS
 */
 
-.period-classical{
-  background-image: url("https://smhttp-ssl-39255.nexcesscdn.net/wp-content/uploads/2013/10/A-court-gathering-to-hear-music-845x321.jpg");
+.period-early{
+  background-image: url("https://anglican.audio/wp-content/uploads/2018/03/20-191310402924587-1-1-1200x862.jpg");
 }
 
 .period-baroque{
-  background-image: url("https://smhttp-ssl-39255.nexcesscdn.net/wp-content/uploads/2013/10/A-court-gathering-to-hear-music-845x321.jpg");
+  background-image: url("https://www.dailyartmagazine.com/wp-content/uploads/2017/09/ogrod_z5.jpg");
+}
+
+.period-classical{
+  background-image: url("https://ae01.alicdn.com/kf/HTB1cnlXJFXXXXbWXpXXq6xXFXXXH/free-shipping-classical-court-figure-thousand-people-congress-hall-oil-painting-canvas-prints-on-canvas-art.jpg_q50.jpg");
+}
+
+.period-romantic{
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/b9/Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg");
+}
+
+.period-20th{
+  background-image: url("https://wallpaperplay.com/walls/full/c/7/2/29941.jpg");
 }
 
 

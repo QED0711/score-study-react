@@ -25,9 +25,9 @@ const CommentPreviewBox = ({ comment }) => {
             <p className="comment-text comment-work-id">{comment.workID}</p>
             <p className="comment-text comment-content">{comment.content}</p>
 
-            <button onClick={handleClick}>See Score</button>
-            {/* <button onClick={handleShowComment}>See Comment</button> */}
-            <button onClick={handleDeleteClick}>Delete Comment</button>
+            <button className="btn" onClick={handleClick}>See Score</button>
+            {/* <button className="btn" onClick={handleShowComment}>See Comment</button> */}
+            <button className="btn" onClick={handleDeleteClick}>Delete Comment</button>
         </div>
     )
 

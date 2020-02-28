@@ -53,8 +53,8 @@ const PeriodContainer = () => {
       }
       {cs.composers && (
         <div>
-          <button onClick={handleSelectAll}>Select All</button>
-          <button onClick={handleClearSelection}>Clear Selections</button>
+          <button className="btn" onClick={handleSelectAll}>Select All</button>
+          <button className="btn" onClick={handleClearSelection}>Clear Selections</button>
           <Period title={"Medieval & Renaissance"} era={"early"} composers={cs.composers} />
           <Period title={"Baroque"} era={"baroque"} composers={cs.composers} />
           <Period title={"Classical"} era={"classical"} composers={cs.composers} />
@@ -69,7 +69,7 @@ const PeriodContainer = () => {
       {
         !!cs.selectedComposers.length ?
           !!cs.filteredScores.length ?
-            <button
+            <button className="btn"
               onClick={e => {
                 randomScore(cs.filteredScores, csm.setSelectedScore);
               }}
