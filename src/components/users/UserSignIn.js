@@ -25,7 +25,7 @@ const UserSignIn = () => {
 
   return (
     <section className="content-container">
-      <form id="user-sign-in" onSubmit={handleSubmit}>
+      <form className="user-form" id="user-sign-in" onSubmit={handleSubmit}>
         <label htmlFor="username">Username:</label>
         <br />
         <input id="username" type="text" required placeholder="Username" />

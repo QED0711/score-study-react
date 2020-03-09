@@ -1,3 +1,15 @@
+/* 
+CONTAINER
+*/
+
+.period-selection-container{
+  width: 95%;
+  margin: 1em auto 0;
+  padding: 1em 0;
+
+  box-shadow: 2px 2px 10px var(--light-shadow);
+  border-radius: 8px;
+}
 
 /* 
 PERIOD

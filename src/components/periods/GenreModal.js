@@ -26,7 +26,7 @@ const GenreModal = ({setShowGenreModal, genres, setSelectedGenres}) => {
         <div className="modal-background">
             <div className="modal-body">
                 <CloseModal handleClose={handleCloseGenreModal} />
-                <input type="text" value={genreSearch} onChange={e => setGenreSearch(e.target.value)} placeholder="Search genres..." />
+                <input type="text" value={genreSearch} onChange={e => setGenreSearch(e.target.value)} placeholder="Search available genres..." />
                 <button className="btn" onClick={handleResetGenres}>Reset</button>
 
                 <div>

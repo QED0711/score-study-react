@@ -9,9 +9,9 @@ import { createUser } from "../../js/apiRequests";
 const CreateUser = () => {
   const { state: s, stateMethods: sm } = useContext(UserContext);
   const [passwordMatch, setPasswordMatch] = useState(null);
-  
+
   if (s.user) return <Redirect to="/" />;
-  
+
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -31,7 +31,7 @@ const CreateUser = () => {
 
   return (
     <div>
-      <form id="create-user-form" onSubmit={handleSubmit}>
+      <form className="user-form" id="create-user-form" onSubmit={handleSubmit}>
         <label htmlFor="username">Username</label>
         <br />
         <input id="username" type="text" required />
@@ -62,15 +62,17 @@ const CreateUser = () => {
         <h4 style={{ color: "red" }}>Passwords do not match</h4>
       )}
       <h5>
-        * An email address is optional, and it will only be used to verify your
-        identity in the event that you lose access to your account.
+        <em>
+          * An email address is optional, and it will only be used to verify your
+          identity in the event that you lose access to your account.
+        </em>
       </h5>
 
-        {
-          s.createUserError 
-          &&
-          <h3 className="user-error">{s.createUserError}</h3>
-        }
+      {
+        s.createUserError
+        &&
+        <h3 className="user-error">{s.createUserError}</h3>
+      }
 
     </div>
   );

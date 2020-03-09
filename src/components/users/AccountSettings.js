@@ -30,7 +30,7 @@ const AccountSettings = () => {
     return (
         <div>
             <h2>{s.user.username}</h2>
-            <form id="email-settings-form" onSubmit={handleChangeEmailSubmit}>
+            <form className="user-form" id="email-settings-form" onSubmit={handleChangeEmailSubmit}>
                 <label htmlFor="email">Email</label>
                 <br/>
                 <input id="email" type="text" defaultValue={s.user.email} />
@@ -38,7 +38,7 @@ const AccountSettings = () => {
                 <input type="submit" value="change email" />
             </form>
             <hr/>
-            <form id="password-settings-form" onSubmit={handleChangePasswordSubmit}>
+            <form className="user-form" id="password-settings-form" onSubmit={handleChangePasswordSubmit}>
 
                 <label htmlFor="password">Current Password:</label>
                 <br/>

@@ -52,7 +52,7 @@ const PeriodContainer = () => {
         </h3>
       }
       {cs.composers && (
-        <div>
+        <div className="period-selection-container">
           <button className="btn" onClick={handleSelectAll}>Select All</button>
           <button className="btn" onClick={handleClearSelection}>Clear Selections</button>
           <Period title={"Medieval & Renaissance"} era={"early"} composers={cs.composers} />
