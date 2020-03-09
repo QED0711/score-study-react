@@ -5,6 +5,7 @@ import "./App.css";
 import "./css/elements.css";
 import "./css/user.css";
 import "./css/navigation.css";
+import "./css/score-display.css";
 import "./css/periods.css";
 import "./css/comments.css";
 import "./css/modals.css";

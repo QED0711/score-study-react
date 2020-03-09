@@ -69,7 +69,7 @@ const PeriodContainer = () => {
       {
         !!cs.selectedComposers.length ?
           !!cs.filteredScores.length ?
-            <button className="btn"
+            <button id="new-score-btn" className="btn"
               onClick={e => {
                 randomScore(cs.filteredScores, csm.setSelectedScore);
               }}
