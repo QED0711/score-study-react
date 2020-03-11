@@ -1,5 +1,9 @@
 {
-    "apiProtocol": "http",
-    "apiHost": "localhost",
-    "apiPort": "5000"
+    "apiProtocolDev": "http",
+    "apiHostDev": null,
+    "apiPortDev": "5000",
+    
+    "apiProtocolProd": "http",
+    "apiHostProd": "localhost",
+    "apiPortProd": "5000"
 }

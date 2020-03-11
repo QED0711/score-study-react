@@ -1,7 +1,23 @@
 import $ from "jquery";
 import config from "../config.json";
 
-const baseURL = `${config.apiProtocol}://${config.apiHost}:${config.apiPort}`;
+
+let API_PROTOCOL, API_HOST, API_PORT
+
+console.log(process.env)
+if (process.env.NODE_ENV === "development") {
+  API_PROTOCOL = config.apiProtocolDev
+  API_HOST = config.apiHostDev || window.location.hostname
+  API_PORT = config.apiPortDev
+}
+
+if (process.env.NODE_ENV === "production") {
+  API_PROTOCOL = config.apiProtocolProd
+  API_HOST = config.apiHostProd
+  API_PORT = config.apiPortProd
+}
+
+const baseURL = `${API_PROTOCOL}://${API_HOST}:${API_PORT}`;
 
 // ---------------------------- COMPOSERS API ----------------------------
 
@@ -22,7 +38,7 @@ export const getAllWorks = () => {
     }
   };
 
-  $.ajax(settings).done(function(response) {
+  $.ajax(settings).done(function (response) {
     console.log(response);
   });
 };
@@ -47,7 +63,7 @@ export const getComposerWorks = (composersArr, setScores) => {
     data: { composers: composersArr }
   };
 
-  $.ajax(settings).done(function(response) {
+  $.ajax(settings).done(function (response) {
     setScores(response);
   });
 };
@@ -72,7 +88,7 @@ export const getWorkByID = (workData, stateMethods) => {
     data: workData
   };
 
-  $.ajax(settings).done(function(response) {
+  $.ajax(settings).done(function (response) {
     stateMethods.setSelectedScore(response);
   });
 };
@@ -95,7 +111,7 @@ export const getComposers = setComposers => {
     }
   };
 
-  $.ajax(settings).done(function(response) {
+  $.ajax(settings).done(function (response) {
     setComposers(response);
   });
 };
@@ -122,7 +138,7 @@ export const createUser = (userData, sm) => {
     data: userData
   };
 
-  $.ajax(settings).done(function(response) {
+  $.ajax(settings).done(function (response) {
     if (response.error) {
       sm.setCreateUserError(response.error)
     } else {
@@ -152,7 +168,7 @@ export const signInUser = (userData, sm) => {
     data: userData
   };
 
-  $.ajax(settings).done(function(response) {
+  $.ajax(settings).done(function (response) {
     if (response.error) {
       sm.setSignInError(response.error);
     } else {
@@ -181,7 +197,7 @@ export const changeUserEmail = (userData, sm) => {
     data: userData
   };
 
-  $.ajax(settings).done(function(response) {
+  $.ajax(settings).done(function (response) {
     console.log(response)
   });
 };
@@ -206,11 +222,11 @@ export const changeUserPassword = (userData, sm) => {
     data: userData
   };
 
-  $.ajax(settings).done(function(response) {
-    if(response.error){
-      sm.setPasswordChangeMessage({message: response.error})
+  $.ajax(settings).done(function (response) {
+    if (response.error) {
+      sm.setPasswordChangeMessage({ message: response.error })
     } else {
-      sm.setPasswordChangeMessage({message: "Password successfully updated"})
+      sm.setPasswordChangeMessage({ message: "Password successfully updated" })
     }
   });
 };
@@ -236,7 +252,7 @@ export const createComment = (commentData, sm) => {
     data: commentData
   };
 
-  $.ajax(settings).done(function(response) {
+  $.ajax(settings).done(function (response) {
     console.log(response)
   });
 };
@@ -263,8 +279,8 @@ export const getUserWorkComment = (userWorkData, sm) => {
   };
 
   return new Promise(resolve => {
-    $.ajax(settings).done(function(response) {
-      if (response.length){
+    $.ajax(settings).done(function (response) {
+      if (response.length) {
         resolve(response[0])
       } else {
         resolve(null)
@@ -294,7 +310,7 @@ export const editComment = (data, sm) => {
     data: data
   };
 
-  $.ajax(settings).done(function(response) {
+  $.ajax(settings).done(function (response) {
     console.log(response)
   });
 
@@ -320,7 +336,7 @@ export const getUserComments = (data, sm) => {
     data: data
   };
 
-  $.ajax(settings).done(function(response) {
+  $.ajax(settings).done(function (response) {
     sm.setUserComments(response)
   });
 
@@ -346,7 +362,7 @@ export const deleteComment = (data, sm) => {
     data: data
   };
 
-  $.ajax(settings).done(function(response) {
+  $.ajax(settings).done(function (response) {
     console.log(response)
     // add code here to remove deleted comment or refetch comments
   });
@@ -374,7 +390,7 @@ export const getWorkComments = (data, sm) => {
     data: data
   };
 
-  $.ajax(settings).done(function(response) {
+  $.ajax(settings).done(function (response) {
     sm.setSelectedScoreComments(response)
   });
 
