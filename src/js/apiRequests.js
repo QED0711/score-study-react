@@ -103,16 +103,12 @@ export const getComposers = setComposers => {
   const settings = {
     async: true,
     crossDomain: true,
-    url: baseURL + "/composers",
+    url: "https://jy4nhsueel.execute-api.us-east-2.amazonaws.com/getAllComposers",
     method: "GET",
-    headers: {
-      "cache-control": "no-cache",
-      "Access-Control-Allow-Origin": true
-    }
   };
 
   $.ajax(settings).done(function (response) {
-    setComposers(response);
+    setComposers(JSON.parse(response));
   });
 };
 
