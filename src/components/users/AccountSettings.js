@@ -24,6 +24,10 @@ const AccountSettings = () => {
         const newPassword = document.getElementById("new-password").value
         const newPasswordConfirm = document.getElementById("new-password-confirm").value
 
+        if(newPassword !== newPasswordConfirm) {
+            return sm.setPasswordChangeMessage({message: "Password confirmation does not match new password", error: 1})
+        }
+
         changeUserPassword({...s.user, currentPassword, newPassword, newPasswordConfirm}, sm)
     }
 
@@ -58,7 +62,7 @@ const AccountSettings = () => {
                 {
                 s.passwordChangeMessage 
                 &&
-                <h5>{s.passwordChangeMessage.message}</h5> 
+                <h5 style={{color: s.passwordChangeMessage?.error ? "red" : "black"}}>{s.passwordChangeMessage.message}</h5> 
                 }
             </form>
         </div>

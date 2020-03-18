@@ -17,7 +17,9 @@ if (process.env.NODE_ENV === "production") {
   API_PORT = config.apiPortProd
 }
 
-const baseURL = `${API_PROTOCOL}://${API_HOST}:${API_PORT}`;
+// const baseURL = `${API_PROTOCOL}://${API_HOST}:${API_PORT}`;
+
+const baseURL = "https://p4lo5ngzn5.execute-api.us-east-2.amazonaws.com/score-study/"
 
 // ---------------------------- COMPOSERS API ----------------------------
 
@@ -53,20 +55,20 @@ export const getComposerWorks = (composersArr, setScores) => {
   const settings = {
     async: true,
     crossDomain: true,
-    url: baseURL + "/composer-works",
+    url: baseURL + "/getworksbycomposers",
     method: "POST",
     headers: {
-      "cache-control": "no-cache",
-      "Access-Control-Allow-Origin": true
+      "Content-Type": "application/json"
     },
-    processData: true,
-    data: { composers: composersArr }
+    data: JSON.stringify({ composers: composersArr })
   };
 
   $.ajax(settings).done(function (response) {
     setScores(response);
   });
 };
+
+// getComposerWorks(["Beethoven, Ludwig van"])
 
 /* 
 ::::::::::::::::::::
@@ -78,14 +80,12 @@ export const getWorkByID = (workData, stateMethods) => {
   const settings = {
     async: true,
     crossDomain: true,
-    url: baseURL + "/work",
+    url: baseURL + "getworkbyid",
     method: "POST",
     headers: {
-      "cache-control": "no-cache",
-      "Access-Control-Allow-Origin": true
+      "Content-Type": "application/json"
     },
-    processData: true,
-    data: workData
+    data: JSON.stringify(workData)
   };
 
   $.ajax(settings).done(function (response) {
@@ -103,12 +103,12 @@ export const getComposers = setComposers => {
   const settings = {
     async: true,
     crossDomain: true,
-    url: "https://jy4nhsueel.execute-api.us-east-2.amazonaws.com/getAllComposers",
+    url: baseURL + "getallcomposers",
     method: "GET",
   };
 
   $.ajax(settings).done(function (response) {
-    setComposers(JSON.parse(response));
+    setComposers(response);
   });
 };
 
@@ -124,14 +124,12 @@ export const createUser = (userData, sm) => {
   const settings = {
     async: true,
     crossDomain: true,
-    url: baseURL + "/users/create",
+    url: baseURL + "createuser",
     method: "POST",
     headers: {
-      "cache-control": "no-cache",
-      "Access-Control-Allow-Origin": true
+      "Content-Type": "application/json"
     },
-    processData: true,
-    data: userData
+    data: JSON.stringify({ data: userData })
   };
 
   $.ajax(settings).done(function (response) {
@@ -144,6 +142,10 @@ export const createUser = (userData, sm) => {
   });
 };
 
+// createUser({username: "testing", email: "testing@email.com", password: "123"})
+
+
+
 /* 
 ::::::::::::::::::
 :: SIGN IN USER ::
@@ -154,14 +156,12 @@ export const signInUser = (userData, sm) => {
   const settings = {
     async: true,
     crossDomain: true,
-    url: baseURL + "/users/sign-in",
+    url: baseURL + "signinuser",
     method: "POST",
     headers: {
-      "cache-control": "no-cache",
-      "Access-Control-Allow-Origin": true
+      "Content-Type": "application/json"
     },
-    processData: true,
-    data: userData
+    data: JSON.stringify({ data: userData })
   };
 
   $.ajax(settings).done(function (response) {
@@ -173,6 +173,8 @@ export const signInUser = (userData, sm) => {
   });
 };
 
+// signInUser({username: "LAMBDA", password: "lambda"})
+
 /* 
 ::::::::::::::::::
 :: CHANGE EMAIL ::
@@ -183,20 +185,20 @@ export const changeUserEmail = (userData, sm) => {
   const settings = {
     async: true,
     crossDomain: true,
-    url: baseURL + "/users/change-email",
+    url: baseURL + "changeuseremail",
     method: "POST",
     headers: {
-      "cache-control": "no-cache",
-      "Access-Control-Allow-Origin": true
+      "Content-Type": "application/json"
     },
-    processData: true,
-    data: userData
+    data: JSON.stringify({ data: userData })
   };
 
   $.ajax(settings).done(function (response) {
     console.log(response)
   });
 };
+
+// changeUserEmail({username: "Lambda", "userID": "5e6e7f867440360007d73085","email": "lambda@aws.com"})
 
 /* 
 :::::::::::::::::::::
@@ -208,24 +210,27 @@ export const changeUserPassword = (userData, sm) => {
   const settings = {
     async: true,
     crossDomain: true,
-    url: baseURL + "/users/change-password",
+    url: baseURL + "changeuserpassword",
     method: "POST",
     headers: {
-      "cache-control": "no-cache",
-      "Access-Control-Allow-Origin": true
+      "Content-Type": "application/json"
     },
-    processData: true,
-    data: userData
+    data: JSON.stringify({ data: userData })
   };
 
   $.ajax(settings).done(function (response) {
     if (response.error) {
-      sm.setPasswordChangeMessage({ message: response.error })
+      sm.setPasswordChangeMessage({ message: response.error, error: 1 })
     } else {
       sm.setPasswordChangeMessage({ message: "Password successfully updated" })
     }
   });
 };
+
+// changeUserPassword({"username": "LAMBDA",
+// "userID": "5e6e7f867440360007d73085",
+// "currentPassword": "postman",
+// "newPassword": "lambda"})
 
 
 /* 
@@ -238,20 +243,25 @@ export const createComment = (commentData, sm) => {
   const settings = {
     async: true,
     crossDomain: true,
-    url: baseURL + "/comments/create",
+    url: baseURL + "createcomment",
     method: "POST",
     headers: {
-      "cache-control": "no-cache",
-      "Access-Control-Allow-Origin": true
+      "Content-Type": "application/json"
     },
-    processData: true,
-    data: commentData
+    data: JSON.stringify({ data: commentData })
   };
 
   $.ajax(settings).done(function (response) {
     console.log(response)
   });
 };
+
+// createComment({
+//   "userID": "5dc7f0dad2b8362382cbaa81",
+//   "workID": "Smetana, Bedřich-3 Album Leaves, Op.3",
+//   "scoreURL": "http://ks.imslp.net/files/imglnks/usimg/1/1f/IMSLP73153-PMLP146546-Smetana--To-Robert-Schumann-Op3-No1--V-Urbanek.pdf",
+//   "content": "COMMENT FROM POSTMAN"
+// })
 
 /* 
 :::::::::::::::::::::::::::
@@ -296,14 +306,12 @@ export const editComment = (data, sm) => {
   const settings = {
     async: true,
     crossDomain: true,
-    url: baseURL + "/comments/edit-comment",
+    url: baseURL + "editcomment",
     method: "POST",
     headers: {
-      "cache-control": "no-cache",
-      "Access-Control-Allow-Origin": true
+      "Content-Type": "application/json"
     },
-    processData: true,
-    data: data
+    data: JSON.stringify({ data })
   };
 
   $.ajax(settings).done(function (response) {
@@ -311,6 +319,13 @@ export const editComment = (data, sm) => {
   });
 
 };
+
+// editComment({
+//   "commentID": "5e71f7dcce2c9800089e8a94",
+//   "userID": "5dc7f0dad2b8362382cbaa81",
+//   "workID": "Smetana, Bedřich-3 Album Leaves, Op.3",
+//   "content": "NEWER CONTENT FROM API TEST"
+// })
 
 /* 
 :::::::::::::::::::::::
