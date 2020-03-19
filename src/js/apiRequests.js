@@ -270,18 +270,16 @@ export const createComment = (commentData, sm) => {
 */
 
 // Gets a users comment on a specific work
-export const getUserWorkComment = (userWorkData, sm) => {
+export const getUserWorkComment = (data, sm) => {
   const settings = {
     async: true,
     crossDomain: true,
-    url: baseURL + "/comments/user-work-comments",
+    url: baseURL + "getuserworkcomments",
     method: "POST",
     headers: {
-      "cache-control": "no-cache",
-      "Access-Control-Allow-Origin": true
+      "Content-Type": "application/json"
     },
-    processData: true,
-    data: userWorkData
+    data: JSON.stringify({ data })
   };
 
   return new Promise(resolve => {
@@ -295,6 +293,11 @@ export const getUserWorkComment = (userWorkData, sm) => {
   })
 
 };
+
+// getUserWorkComment({
+//   "userID": "5dc7f0dad2b8362382cbaa81",
+//   "workID": "Smetana, Bedřich-The Secret, JB 1:110"
+// })
 
 /* 
 ::::::::::::::::::
@@ -337,14 +340,12 @@ export const getUserComments = (data, sm) => {
   const settings = {
     async: true,
     crossDomain: true,
-    url: baseURL + "/comments/user-comments",
+    url: baseURL + "getusercomments",
     method: "POST",
     headers: {
-      "cache-control": "no-cache",
-      "Access-Control-Allow-Origin": true
+      "Content-Type": "application/json"
     },
-    processData: true,
-    data: data
+    data: JSON.stringify({ data })
   };
 
   $.ajax(settings).done(function (response) {
@@ -352,6 +353,8 @@ export const getUserComments = (data, sm) => {
   });
 
 };
+
+// getUserComments({userID: "5dc7f0dad2b8362382cbaa81"})
 
 /* 
 ::::::::::::::::::::
@@ -363,14 +366,12 @@ export const deleteComment = (data, sm) => {
   const settings = {
     async: true,
     crossDomain: true,
-    url: baseURL + "/comments/delete-comment",
+    url: baseURL + "deletecomment",
     method: "POST",
     headers: {
-      "cache-control": "no-cache",
-      "Access-Control-Allow-Origin": true
+      "Content-Type": "application/json"
     },
-    processData: true,
-    data: data
+    data: JSON.stringify({ data })
   };
 
   $.ajax(settings).done(function (response) {
@@ -379,6 +380,8 @@ export const deleteComment = (data, sm) => {
   });
 
 };
+
+// deleteComment({commentID: "5e709fff8de5630007e4b79b"})
 
 
 /* 
@@ -391,14 +394,12 @@ export const getWorkComments = (data, sm) => {
   const settings = {
     async: true,
     crossDomain: true,
-    url: baseURL + "/comments/work-comments",
+    url: baseURL + "getworkcomments",
     method: "POST",
     headers: {
-      "cache-control": "no-cache",
-      "Access-Control-Allow-Origin": true
+      "Content-Type": "application/json"
     },
-    processData: true,
-    data: data
+    data: JSON.stringify({ data })
   };
 
   $.ajax(settings).done(function (response) {
@@ -406,4 +407,6 @@ export const getWorkComments = (data, sm) => {
   });
 
 };
+
+// getWorkComments({workID: "Victoria, Tomás Luis de-O vos omnes, Tenebræ Responsory"})
 
