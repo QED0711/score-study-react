@@ -7,12 +7,26 @@ import { ComposerContext } from '../../state/ComposerProvider';
 // API
 import { createComment, getUserWorkComment, editComment } from '../../js/apiRequests'
 
-const CommentModal = ({ setShowCommentModal, scoreURL }) => {
+const CommentModal = ({ setShowCommentModal, /* pdf ,*/ }) => {
 
     const { state: userState } = useContext(UserContext)
     const { state: composerState } = useContext(ComposerContext)
 
     const [previousCommentID, setPreviousCommentID] = useState(null);
+
+    // SETUP
+    // if(typeof pdf === "object"){
+    //     pdf = pdf.processedPDF ? pdf.processedPDF : `${pdf.pdf}#page=${pageNum}&toolbar=0&navpanes=1&scrollbar=0`
+    // }
+
+    let pdf;
+    const scoreElement = document.getElementById("selected-score-url")
+    if(scoreElement.tagName === "IFRAME"){
+        pdf = scoreElement.getAttribute("src")
+    } else if (scoreElement.tagName === "A") {
+        pdf = scoreElement.getAttribute("href")
+    }
+
 
     const handleSaveComment = e => {
         // get comment content
@@ -26,7 +40,7 @@ const CommentModal = ({ setShowCommentModal, scoreURL }) => {
             content,
             userID,
             workID,
-            scoreURL
+            scoreURL: pdf
         }
 
         // If a user has already commented, update rather than create

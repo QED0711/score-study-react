@@ -3,10 +3,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { ComposerContext } from "../../state/ComposerProvider";
 import { UserContext } from "../../state/UserProvider";
 
+// HELPERS
+import processRandomPDF from '../../js/processRandomPDF';
+
 // COMPONTENTS
 import CommentModal from './CommentModal';
 import OtherCommentsModal from './OtherCommentsModal'
 import AnswerModal from './AnswerModal';
+import ScoreFrame from "./ScoreFrame";
 
 const ScoreDisplay = ({ scoreURL }) => {
 
@@ -18,6 +22,7 @@ const ScoreDisplay = ({ scoreURL }) => {
   const [showCommentModal, setShowCommentModal] = useState(false);
   const [showOtherCommentsModal, setShowOtherCommentsModal] = useState(false);
   const [showAnswerModal, setShowAnswerModal] = useState(false);
+  const [pageNum, setPageNum] = useState(0)
 
   // EVENTS
 
@@ -36,9 +41,9 @@ const ScoreDisplay = ({ scoreURL }) => {
   useEffect(() => {
     if (composerState.selectedScore) {
       if (!scoreURL) { // if no score url has been provided, generate one
-        setPdf(composerState.selectedScore.pdfs[
-          Math.floor(Math.random() * composerState.selectedScore.pdfs.length)
-        ])
+        console.log("GEN SCORE AND PAGE NUM")
+        setPdf(processRandomPDF(composerState.selectedScore.pdfs))
+        setPageNum(Math.floor(Math.random() * 10) + 5)
       }
     }
   }, [composerState.selectedScore]);
@@ -46,12 +51,15 @@ const ScoreDisplay = ({ scoreURL }) => {
   if (!composerState.selectedScore)
     return <div className="score-display"></div>;
 
-  let pageNum;
-  if (!scoreURL) { // if no scoreURL has been provided, create random pagenum too
-    pageNum = Math.floor(Math.random() * 10) + 5;
-  }
+  // let pageNum;
+  // if (!scoreURL) { // if no scoreURL has been provided, create random pagenum too
+  //   console.log("GENERATED PAGE NUM")
+  //   pageNum = Math.floor(Math.random() * 10) + 5;
+  // }
+
   return (
     <div className="score-display">
+
       {
         userState.user
         &&
@@ -70,19 +78,36 @@ const ScoreDisplay = ({ scoreURL }) => {
       </button>
 
       <br />
-
-      <iframe
-        src={scoreURL ? scoreURL : `${pdf}#page=${pageNum}&toolbar=0&navpanes=1&scrollbar=0`}
-        type="application/pdf"
-        style={{ height: 800, width: "90%", overflow: "hidden" }}
-      ></iframe>
+      {
+        (scoreURL || pdf)
+        &&
+        <ScoreFrame pdf={scoreURL ? scoreURL : pdf} pageNum={pageNum} applyPageNum={!scoreURL} />
+      }
+      {/* {
+        pdf && pdf.secure 
+        ?
+        <iframe
+          src={scoreURL ? scoreURL : `${pdf.processedPDF}#page=${pageNum}&toolbar=0&navpanes=1&scrollbar=0`}
+          type="application/pdf"
+          style={{ height: 800, width: "90%", overflow: "hidden" }}
+        ></iframe>
+        :
+        <h3>
+          The requested score is not served over a secure connection, and cannot be loaded in this application. 
+          You can view the score in another window 
+            {
+            pdf ? <a href={pdf.pdf} target="_blank"> here</a> : "here"
+            }
+        </h3>
+      } */}
 
       {
         showCommentModal
         &&
         <CommentModal
           setShowCommentModal={setShowCommentModal}
-          scoreURL={scoreURL ? scoreURL : `${pdf}#page=${pageNum}&toolbar=0&navpanes=1&scrollbar=0`}
+          // pdf={scoreURL ? scoreURL : pdf}
+          // pageNum={pageNum}
         />
       }
 
@@ -91,7 +116,7 @@ const ScoreDisplay = ({ scoreURL }) => {
         &&
         <OtherCommentsModal setShowOtherCommentsModal={setShowOtherCommentsModal} />
       }
-      
+
       {
         showAnswerModal
         &&
