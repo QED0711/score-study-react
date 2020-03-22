@@ -20,7 +20,7 @@ const NavDesktop = () => {
   return (
     <nav className="navbar navbar-desktop">
       {!s.user && <Link to="/sign-in">Sign In</Link>}
-      <Link to="/">About</Link>
+      {/* <Link to="/">About</Link> */}
       <Link to="/app" onClick={resetSelectedScore} >Application</Link>
       {/* {!s.user && <Link to="/create-account">Create Account</Link>} */}
       {s.user && <Link to="/comments" onClick={resetSelectedScore} >Your Comments</Link>}

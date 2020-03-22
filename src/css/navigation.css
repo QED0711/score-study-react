@@ -1,3 +1,42 @@
+nav{
+    background-color: red;
+}
+
+.navbar-desktop{
+    background-color: rgb(29, 29, 29);
+    box-shadow: 0 5px 20px rgb(29, 29, 29);
+}
+
+.navbar-desktop *{
+    color: var(--accent-blue-semi-opaque);
+}
+
 .navbar-desktop a{
     margin: 1em;
+    padding: 1rem 1.5rem;
+    display: inline-block;
+
+    color: var(--accent-blue-semi-opaque);
+    text-decoration: none;
+
+    border: 2px solid var(--accent-blue-semi-opaque);
+    border-radius: 8px;
+}
+
+.navbar-desktop a:hover{
+    animation-name: hover-link;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+
+@keyframes hover-link{
+    from{
+        color: var(--accent-blue-semi-opaque);    
+        border: 2px solid var(--accent-blue-semi-opaque);
+    }
+    to{
+        color: var(--accent-blue);    
+        border: 2px solid var(--accent-blue);
+    }
 }

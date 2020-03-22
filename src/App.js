@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import "./App.css";
+import "./css/navigation.css";
 import "./css/elements.css";
 import "./css/user.css";
-import "./css/navigation.css";
 import "./css/score-display.css";
 import "./css/periods.css";
 import "./css/comments.css";
@@ -21,6 +21,7 @@ import CreateUser from "./components/users/CreateUser";
 import Logout from "./components/users/Logout";
 import AccountSettings from "./components/users/AccountSettings";
 import UserComments from "./components/comments/UserComments";
+import About from './components/About'
 
 function App() {
 
@@ -33,7 +34,7 @@ function App() {
             <NavDesktop />
             <Switch>
               <Route exact path="/">
-                <h1>ABOUT</h1>
+                <About />
               </Route>
               <Route exact path="/app">
                 <PeriodContainer />

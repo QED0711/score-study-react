@@ -10,6 +10,7 @@
   --light-border: 2px solid rgb(179, 179, 179);
 
   --accent-blue: #64cccc;
+  --accent-blue-semi-opaque: hsla(180, 50%, 60%, 0.66);
   --accent-blue-opaque: hsla(180, 50%, 60%, 0.25);
 
   --accent-red: #cc6666;
