@@ -40,8 +40,13 @@ const AccountSettings = () => {
                 <input id="email" type="text" defaultValue={s.user.email} />
                 <br/>
                 <input type="submit" value="change email" />
+                <br/>
+                <em>Note: you are not required to provide an email to use all the features of this application. Your email will only be used to verify identity if you forget your password.</em>
             </form>
             <hr/>
+            
+            <h3><em>Change Password</em></h3>
+
             <form className="user-form" id="password-settings-form" onSubmit={handleChangePasswordSubmit}>
 
                 <label htmlFor="password">Current Password:</label>

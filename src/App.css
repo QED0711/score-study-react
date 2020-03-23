@@ -13,6 +13,8 @@
   --accent-blue-semi-opaque: hsla(180, 50%, 60%, 0.66);
   --accent-blue-opaque: hsla(180, 50%, 60%, 0.25);
 
+  --slate-blue: rgb(94, 107, 121);
+
   --accent-red: #cc6666;
 }
 
@@ -21,12 +23,17 @@
   box-sizing: border-box;
 }
 
+body{
+  background-color: aliceblue;
+}
+
 
 .App {
   text-align: center;
   box-sizing: border-box;
 
-  padding: 1em 0 2em;
+  padding: 0 0 2em;
+
 }
 
 .App-logo {
