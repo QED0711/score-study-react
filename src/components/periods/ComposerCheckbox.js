@@ -18,14 +18,20 @@ const ComposerCheckbox = ({ composer }) => {
 
   const handleClickV2 = composer => {
     return e => {
-      const currentClass = e.target.className;
+
+      let target = e.target;
+      while(target.nodeName !== "DIV"){
+        target = target.parentElement
+      }
+
+      const currentClass = target.className;
       if (!!currentClass.match("composer-selected-true")) {
-        e.target.className = "composer-checkbox composer-selected-false";
+        target.className = "composer-checkbox composer-selected-false";
         sm.setSelectedComposers(
           s.selectedComposers.filter(name => name !== composer.composer)
         );
       } else {
-        e.target.className = "composer-checkbox composer-selected-true";
+        target.className = "composer-checkbox composer-selected-true";
         sm.setSelectedComposers([...s.selectedComposers, composer.composer]);
       }
     };
@@ -42,7 +48,8 @@ const ComposerCheckbox = ({ composer }) => {
       onClick={handleClickV2(composer)}
       data-fullname={composer.composer}
     >
-      {composer.displayName}
+      <p className="composer-checkbox-text composer-name">{composer.displayName}</p>
+      <p className="composer-checkbox-text composer-dates">{composer.birth} - {composer.death}</p>
     </div>
   );
 };

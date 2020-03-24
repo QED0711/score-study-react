@@ -79,6 +79,22 @@ CHECKBOXES
 }
 
 
+.composer-checkbox-text{
+  margin: 0;
+  padding: 0;
+}
+
+.composer-name{
+  font-weight: 500;
+}
+
+.composer-dates{
+  font-size: 0.8rem;
+  font-style: italic;
+  font-weight: 300;
+}
+
+
 
 /* 
 PERIODS

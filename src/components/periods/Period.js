@@ -14,10 +14,10 @@ const Period = ({ title, era, composers }) => {
   const [anySelected, setAnySelected] = useState(false)
 
 
-  // Filter only composers who match the specified era
+  // Filter only composers who match the specified era and sorth them by birth date
   const validComposers = composers.filter(c => {
     return c.period === era;
-  });
+  }).sort((a, b) => a.birth - b.birth);
 
   // Render each valid composer to a checkbox
   const periodComposers = validComposers.map((composer, i) => {
